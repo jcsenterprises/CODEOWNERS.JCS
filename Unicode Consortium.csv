@@ -1,0 +1,997 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Project url,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Fix versions,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Components,Due date,Votes,Labels,Labels,Description,Environment,Watchers,Watchers,Watchers,Watchers,Watchers Id,Watchers Id,Watchers Id,Watchers Id,Log Work,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Outward issue link (Blocks),Outward issue link (Cloners),Outward issue link (Duplicate),Outward issue link (Relates),Outward issue link (Relates),Attachment,Custom field (Development),Custom field (Epic Colour),Custom field (Epic Link),Custom field (Epic Name),Custom field (Epic Status),Custom field (Flagged),Custom field (Issue color),Custom field (Phase),Custom field (Rank),Custom field (Request Type),Custom field (Request participants),Custom field (Reviewer),Custom field (Reviewer)Id,Satisfaction rating,Custom field (Start date),Custom field (Story Points),Custom field (Story Points),Custom field (Story point estimate),Custom field (Target end),Custom field (Target start),Custom field (Team),Custom field (Time Needed),Custom field ([CHART] Date of First Response),Custom field (_phase),Custom field (locale),Custom field (tracCc),Custom field (tracCreated),Custom field (tracOwner),Custom field (tracProject),Custom field (tracReporter),Custom field (tracResolution),Custom field (tracReviewer),Custom field (tracStatus),Custom field (tracWeeks),Custom field (xpath),Comment,Comment,Comment,Comment,Comment,Comment,Comment,Status Category
+49 BRS§A18.5 Attribute Validity,CLDR-14512,86138,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,zero,Working as Designed,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,17/Feb/21 9:56 AM,07/Apr/21 8:54 AM,08/Sep/21 3:09 PM,18/Feb/21 3:46 PM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,Mark Davis,Steven R. Loomis,,,5b1fa41abe73de20759a87c2,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0d1zb:,,,,,,,,,,,,,,2021-02-18 23:46:17.386,,,,,,,,,,,,,"18/Feb/21 3:46 PM;5b1fa41abe73de20759a87c2;That is, there were no changes from the tool.",,,,,,,Done
+doc: how to update metadata?,CLDR-15005,86849,User Guide,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,minor,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,24/Aug/21 10:16 AM,26/Aug/21 4:18 PM,08/Sep/21 3:09 PM,,41,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Pages such as https://sites.google.com/site/cldr/development/updating-codes/updating-un-codes  have instructions with similar comments to:
+
+> Record the latest version that's been synced as a meta-data//This is new (Aug 2020)! 
+
+There's no documentation on where or how to do this.",,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,CLDR-15010,,,{},,,,,,,,0|i0d6db:,,,,,,,,,,,,,,,,,,,,,,,,,,,"25/Aug/21 9:35 AM;5af4a8718a1abd1427952ed9;the file is properties/external_data_versions.tsv
+
+
+
+document it along with the update processes","25/Aug/21 12:04 PM;5af4a8718a1abd1427952ed9;Looking at this file now, it’s not clear to me how much it helps us to touch it. 
+
+# What the files are and how they are versioned: this should go as part of technical docs for our process. Static.
+# “version info”: there’s no version info in the file. Just pointers to internal or external references.
+# “Date” downloaded:  Is this useful ? git metadata already has the last mod date of each file ( iso4217raw.txt, for example ). If the file didn’t change, this doesn’t seem useful to record.
+
+{noformat}#Data	Date	Version Info	File
+Factbook data	2020-08-28	Recorded when downloaded	factbook_population.txt, etc.
+ISO 636 (language) data	2021-08-25	Date in YYYYMMDD	iso-639-3-version.tab, etc.
+ISO currency data	2021-08-25	Recorded when downloaded	iso4217raw.txt
+ISO subdivision codes	2020-02-24	Recorded when downloaded	not stored
+ISO subdivision names	2019-02-24	Recorded when downloaded	not stored
+Language Groups	2017-09-24	Recorded when downloaded	childToParent.tsv, etc
+Timezone IDs (tzdb)	2020-10-19	Recorded when downloaded	africa, etc.
+Top level domains	2021-08-25	Date at top	tlds-alpha-by-domain.txt
+EU member states	2021-08-25	Recorded when downloaded	eu_member_states_raw.txt
+UN literacy data	2020-08-01	Date at top	un_literacy.csv
+UN member states	2019-05-19	Date at top	un_member_states_raw.txt
+Worldbank data	2020-08-18	Date at bottom	world_bank_data.csv
+NIST unit data	2020-03-10	Recorded when downloaded	nistBaseUnits.txt, etc{noformat}
+
+*Proposal*
+
+* I think we should add a {{util/data/README.md}} (and {{util/README.md}}) that documents what all of the files are, statically, and link to docs on how to update.  or just put the update docs right there.
+* Then, no longer update this .tsv file.",,,,,,In Progress
+Test: BRS §A40 should have a test that unicodeVersion matches ICU's version,CLDR-15004,86848,Enhancement,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,minor,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,24/Aug/21 9:25 AM,25/Aug/21 9:31 AM,08/Sep/21 3:09 PM,,41,,,,,,,,,,,,,,,,,,,,,,BRS,infrastructure,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,this would result in unicodeVersion in the DTD being updated at the same time.,,Markus Scherer,Steven R. Loomis,,,5abac250c8a6c4195fbeec16,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0d6d3:,,,Markus Scherer,5abac250c8a6c4195fbeec16,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+Clean up source code,CLDR-13721,84941,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,minor,Fixed,Yoshito Umaoka,5b295586e379aa18a9ef35b8,Yoshito Umaoka,5b295586e379aa18a9ef35b8,Yoshito Umaoka,5b295586e379aa18a9ef35b8,15/Apr/20 11:29 AM,05/Oct/20 8:40 PM,08/Sep/21 3:09 PM,05/Oct/20 8:40 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"I looked at BRS item to organize imports/clean up/format tool codes for 37. There are so many files affected because of 1. We did not do this for long time / 2. We updated minimum Java runtime to 8 at some point. Although these automated changes should be safe, I don't want to take a risk just before release.
+
+I want to do this in early in 38 development cycle instead.",,Yoshito Umaoka,,,,5b295586e379aa18a9ef35b8,,,,,0,0,,0%,0,0,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-06-01T15:58:39.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0culb:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS v40 BRS §A07.4 Update ICU4J libraries in CLDR,CLDR-15008,86854,Task,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,medium,,Yoshito Umaoka,5b295586e379aa18a9ef35b8,Yoshito Umaoka,5b295586e379aa18a9ef35b8,Yoshito Umaoka,5b295586e379aa18a9ef35b8,25/Aug/21 2:17 PM,25/Aug/21 2:17 PM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Last update: CLDR-14783
+
+Unicode 14 Line break data was updated in ICU since then.",,Yoshito Umaoka,,,,5b295586e379aa18a9ef35b8,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, build={count=2, dataType=build, failedBuildCount=0, successfulBuildCount=2, unknownBuildCount=0}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2021-08-25T15:40:27.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}},""build"":{""overall"":{""count"":2,""lastUpdated"":null,""failedBuildCount"":0,""successfulBuildCount"":2,""unknownBuildCount"":0,""dataType"":""build""},""byInstanceType"":{""cloud-providers"":{""count"":2,""name"":""Other providers""}}}}},""isStale"":true}}",,,,,,,,0|i0d6ef:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+BRS 38 A24.7 - improve CompareFilesBetweenReleases,CLDR-14148,85545,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,medium,Fixed,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,31/Aug/20 3:10 PM,16/Oct/20 8:29 AM,08/Sep/21 3:09 PM,16/Oct/20 8:29 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,BRS,,"improve CompareFilesBetweenReleases(2) so that it detects seed/common migrations, and other improvements",,Kristi Lee,Steven R. Loomis,,,5ca62348fa160e67c4025b49,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-09-01T15:07:32.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cybj:,,,Kristi Lee,5ca62348fa160e67c4025b49,,,,,,,,,,2020-10-16 15:29:02.063,,,,,,,,,,,,,16/Oct/20 8:29 AM;5ca62348fa160e67c4025b49;[CLDR 38 org.unicode.cldr.tool.CompareFilesBetweenReleases2 (github.com)|https://gist.github.com/srl295/9ccf97f6ca2a8c0a01b12588c8e4bde5],,,,,,,Done
+CLDR 35 BRS B06 Organize Import Statements,CLDR-11968,70412,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,medium,,Yoshito Umaoka,5b295586e379aa18a9ef35b8,Yoshito Umaoka,5b295586e379aa18a9ef35b8,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:18 PM,09/May/19 12:31 PM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Organize Java import statements,,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=1, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":1,""lastUpdated"":""2019-03-26T22:35:13.000-0700"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0acwv:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,final,,,26/Mar/19 10:18 PM,yoshito,,yoshito,fixed,,closed,,,,,,,,,,Done
+CLDR 35 data resolution - and BRS activities,CLDR-11859,70303,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,medium,,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:18 PM,09/May/19 12:40 PM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Standard error resolution stuff.,,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=3, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":3,""lastUpdated"":""2019-02-20T20:38:04.000-0800"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ac8n:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,final,,,13/Feb/19 8:34 AM,emmons,,emmons,fixed,,closed,,,,,,,,,,Done
+Update CLDRFileTransformer to handle generation of updates to yue_Hans,CLDR-10204,68647,Bug,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,medium,,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,TracBot,5b34954eddd2363f63053eec,10/Jan/19 8:58 PM,15/Aug/21 11:23 AM,08/Sep/21 3:09 PM,,41,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Split out of [CLDR-9847]:
+
+By the end of CLDR 32, we will need to update tools/java/org/unicode/cldr/tool/CLDRFileTransformer.java to handle generation of updates to the yue_Hans locale from data in the yue[_Hant] locale using the Traditional-Simplified transform. To do this we will need a new PolicyIfExisting type, which in turn will need access to the values for yue_Hant and yue_Hans in the current release (the one currently being finished when CLDRFileTransformer is run to update certain locales), as well as to the values for yue_Hant from the previous release, and probably also to the values for yue_Hans in the previous release.
+
+I think this new PolicyIfExisting behavior should operate as follows:
+* If current yue_Hans value == previous yue_Hans value (yue_Hans value not updated in this release), AND
+* If current yue_Hant value != previous yue_Hant value (yue_Hant value was updated in this release), AND
+* If current yue_Hans value == transform of previous yue_Hant value (yue_Hans was generated), THEN
+* Set current yue_Hans value = transform of current yue_Hant value
+
+It may be that the first condition above is effectively redundant, need to think about this some more.",,John Emmons,Mark Davis,User ,,5b353e5c1434ca6683d9b0ad,5b1fa41abe73de20759a87c2,unknown,,,,,,,,,,,,,,CLDR-9847,,,{},,,,,,,,0|i0a20n:,,,,,,,,,,,,,,,rc,,"emmons,mark,pedberg",17/Apr/17 3:27 PM,pedberg,,pedberg,,,design,,,,,,,,,,In Progress
+CLDR 40 BRS: cldr-json,CLDR-15022,86881,Bug,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Adrien Vergé,5e0db63b4006ea0ea327f791,Steven R. Loomis,5af4a8718a1abd1427952ed9,01/Sep/21 3:11 PM,01/Sep/21 3:13 PM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,json,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Hello,
+
+There's no tag for the latest stable version (CLDR 39) in the JSON repo: [https://github.com/unicode-org/cldr-json/releases|https://github.com/unicode-org/cldr-json/releases]. I tried creating the {{39.0.0}} tag myself but obviously I miss the rights to do so.
+
+These JSON packages are used by many major software, e.g. Angular, Globalize...
+
+Could any maintainer update the JSON files and tag to the latest version? Thanks in advance.
+
+Related to:
+
+* [https://unicode-org.atlassian.net/browse/CLDR-14317|https://unicode-org.atlassian.net/browse/CLDR-14317]
+* [https://unicode-org.atlassian.net/browse/CLDR-14258|https://unicode-org.atlassian.net/browse/CLDR-14258]
+* [https://unicode-org.atlassian.net/browse/CLDR-12014|https://unicode-org.atlassian.net/browse/CLDR-12014]",,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,CLDR-14682,,,,,{},,,,,,,,0|i0d6kf:,,,Shane Carr,5b075dff56a2a01a412c67d7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+Streamline the BRS process,CLDR-14999,86843,Bug,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,23/Aug/21 10:44 AM,24/Aug/21 10:16 AM,08/Sep/21 3:09 PM,,41,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"We should steamline the BRS tooling/process, making the items more turnkey wherever possible. There will alway need to be some human intervention in terms of reviewing the changes made by the tool, but we should eliminate as much of the 'grunt work' involved as possible.",,Annemarie Apple 🍎,Mark Davis,,,5e176cf93ebba10e937fd91d,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,CLDR-15004,CLDR-15005,,{},,,,,,,,0|i0d6bz:,,,,,,,,,,,,,,2021-08-23 18:15:01.047,,,,,,,,,,,,,23/Aug/21 11:15 AM;5e176cf93ebba10e937fd91d;Create a list of examples of commonly ‘wrong’ items during charts review.,,,,,,,In Progress
+BRS v40§A05.5: CLDRModify ,CLDR-14980,86807,Task,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,16/Aug/21 2:24 PM,16/Aug/21 3:33 PM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,- CLDRModify steps,,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,CLDR-14981,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, build={count=3, dataType=build, failedBuildCount=0, successfulBuildCount=3, unknownBuildCount=0}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2021-08-23T09:23:49.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}},""build"":{""overall"":{""count"":3,""lastUpdated"":null,""failedBuildCount"":0,""successfulBuildCount"":3,""unknownBuildCount"":0,""dataType"":""build""},""byInstanceType"":{""cloud-providers"":{""count"":3,""name"":""Other providers""}}}}},""isStale"":true}}",,,,,,,,0|i0d63z:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+40 BRS§A21 Generate Algorithmic Locales,CLDR-14969,86789,Bug,Reviewing,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,10/Aug/21 1:54 PM,25/Aug/21 8:08 AM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,BRS,,,,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,CLDR-14513,,CLDR-14952,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2021-08-24T16:11:14.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d5zz:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+Link checking for LDML spec in markdown,CLDR-14602,86269,Docs,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Rick McGowan,5b2957469ba6d02662e2f7b4,Rick McGowan,5b2957469ba6d02662e2f7b4,17/Mar/21 9:18 AM,17/Mar/21 9:26 AM,08/Sep/21 3:09 PM,,,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Link checking doesn’t work in new “MD” format via githubio. Need to refine process for validating and link-checking updated TR35 files. See (currently) BRS #D01.
+
+E.g., perhaps something like: https://github.com/marketplace/actions/markdown-link-check 
+https://github.com/marketplace?type=actions&query=link+check
+
+",,Rick McGowan,,,,5b2957469ba6d02662e2f7b4,,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0d2sf:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+Errors from testing production data for 39-alpha4,CLDR-14572,86220,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,04/Mar/21 10:12 AM,06/Apr/21 5:16 PM,08/Sep/21 3:09 PM,06/Apr/21 5:16 PM,39,,,,,,,,,,,,,,,,,,,,,,BRS,Tools-Internal,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"I see the following errors when testing production data for release-39-alpha4:
+
+1. Remove dialect names that are supposed to match the ones generated from locale display patterns; but maybe that does not work for short variant?
+
+{code:java}# Error
+   TestVariantName {
+      Error: (TestCLDRUtils.java:70) : Test variant formatting combinedShort en_US_POSIX: expected ""anglais [É.-U.] (informatique)"", got ""anglais américain (informatique)""
+    } (0.031s) FAILED (1 failure(s))
+
+# Test code that reported the error
+	 checkNames(french, ""en_US_POSIX"", ""anglais américain (informatique)"",
+		""anglais [É.-U.] (informatique)"",
+		""anglais (États-Unis, informatique)"",
+		""anglais (É.-U., informatique)"");
+
+# Data change in fr.xml from cldr to cldr-staging that caused the error
+		<language type=""en"">anglais</language>
+		<language type=""en_AU"">anglais australien</language>
+		<language type=""en_CA"">anglais canadien</language>
+		<language type=""en_GB"">anglais britannique</language>
+-		<language type=""en_GB"" alt=""short"">anglais (R.-U.)</language>
+		<language type=""en_US"">anglais américain</language>
+-		<language type=""en_US"" alt=""short"">anglais (É.-U.)</language>{code}
+
+2. Test assumes value is present but it has ↑↑↑ and gets removed; maybe change test?
+
+{code:java}# Error
+  TestUtilities {
+    TestMissingStatus {
+      Error: (TestUtilities.java:1388) Got getMissingStatus = ABSENT; expected PRESENT
+    } (0.018s) FAILED (1 failure(s))
+
+# Test code that reported the error
+    public void TestMissingStatus() {
+        final String path = ""//ldml/units/unitLength[@type=\""short\""]/unit[@type=\""volume-barrel\""]/displayName"";
+        final String locale = ""fr"";
+        final CLDRFile cldrFile = testInfo.getCLDRFile(locale, true);
+        final MissingStatus expected = MissingStatus.PRESENT;
+        final MissingStatus status = VettingViewer.getMissingStatus(cldrFile, path, true /* latin */);
+        if (status != expected) {
+            errln(""Got getMissingStatus = "" + status.toString() + ""; expected "" + expected.toString());
+        }
+    }
+
+# Data change in fr.xml units-short from cldr to cldr-staging that caused the error
+		<unit type=""volume-barrel"">
+-			<displayName>↑↑↑</displayName>
+			<unitPattern count=""one"">{0} bbl</unitPattern>
+			<unitPattern count=""other"">{0} bbl</unitPattern>
+		</unit>{code}",,Kison Haynes,Mark Davis,Peter Edberg,,60411d308cc44200698a1f34,5b1fa41abe73de20759a87c2,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2021-03-09T13:20:04.000-0800"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d2hj:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,08/Mar/21 10:19 AM;5b29558fe478c9080efacbde;Issue might be test is using CLDRFile methods that returns non-resolved string value. COuld lazily create resolved file and check that if there is an initial failure.,"09/Mar/21 11:04 AM;5b29558fe478c9080efacbde;Actually neither of these issues had to do with using CLDRFile non-resolved string value.
+
+# The first has to do with how to handle requests for display names that are both short and dialect-style (non-compound); the CLDR spec does not say which to give priority. The fr data in the main CLDR repo was as below, with the items removed as redundant for production data marked with '-'. 
+
+{noformat}   <languages>
+     <language type=""en"">anglais</language>
+     <language type=""en_GB"">anglais britannique</language>
+-    <language type=""en_GB"" alt=""short"">anglais (R.-U.)</language>
+     <language type=""en_US"">anglais américain</language>
+-    <language type=""en_US"" alt=""short"">anglais (É.-U.)</language>
+ 
+   <territories>
+     <territory type=""GB"">Royaume-Uni</territory>
+     <territory type=""GB"" alt=""short"">R.-U.</territory>
+     <territory type=""US"">États-Unis</territory>
+     <territory type=""US"" alt=""short"">É.-U.</territory>{noformat}
+
+If we are just asking for the short dialect names for en_US or en_GB there is no issue, and the short names for en_GB/US are redundant. But if we ask for the name of something like ""en_US_POSIX"", they are not only non-redundant but actually harmful. We first get the dialect name for e.g. ""anglais (É.-U.)"", then convert parens to square brackets, and append other variant names using the standard localeDisplayPattern.
+
+With data in the main repo, we were getting:
+
+{noformat}standard long:  ""anglais (États-Unis, informatique)""
+standard short: ""anglais (É.-U., informatique)""
+dialect long:   ""anglais américain (informatique)""
+dialect short:  ""anglais [É.-U.] (informatique)""  ** bad **{noformat}
+
+So I decided to remove the “short” entries for en_US/en_GNB in the main repo (they get stripped for production data anyway). With removal we get this, same as what we were getting with production data, which is better:
+
+{noformat}dialect short:  ""anglais américain (informatique)""  ** better ** {noformat}
+
+However for this particular case we might prefer the following, which would require a spec change to favor the request for short over the request for dialect-style (though that behavior might not be desired for all dialect-style names):
+
+{noformat}dialect short:  ""anglais (É.-U., informatique)""   ** best for this case, maybe not others **{noformat}
+
+----
+
+2. The second is more of an issue with the {{TestMissingStatus}} test. It was calling VettingViewer.getMissingStatus to verify that a particular unit display name was PRESENT. However, in French, that name currently has ↑↑↑ and gets stripped for production. But even though the value ultimately comes from root in either case, VettingViewer.getMissingStatus reports PRESENT if the item is present with ↑↑↑ and ABSENT if the item is stripped. So for the test, choose another unit display item that does not have ↑↑↑.",,,,,,Done
+CLDR39 BRS A12-A18 Updating codes,CLDR-14516,86142,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Yoshito Umaoka,5b295586e379aa18a9ef35b8,Yoshito Umaoka,5b295586e379aa18a9ef35b8,17/Feb/21 11:22 AM,26/Mar/21 10:58 AM,08/Sep/21 3:09 PM,26/Mar/21 10:58 AM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Issue used for BRS task - https://sites.google.com/site/cldr/development/updating-codes,,Yoshito Umaoka,,,,5b295586e379aa18a9ef35b8,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2021-02-17T16:45:10.000-0800"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d207:,,,Yoshito Umaoka,5b295586e379aa18a9ef35b8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+39 BRS§A24.4 rerun CLDRModify,CLDR-14514,86140,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Duplicate,Thomas Bishop,5cae14ea9c21b237caab46fc,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,17/Feb/21 9:58 AM,22/Feb/21 1:21 PM,08/Sep/21 3:09 PM,22/Feb/21 1:21 PM,,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,39,,,,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,CLDR-14491,,,,{},,,,,,,,0|i0d1zr:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+39 BRS§A21 Generate Algorithmic Locales,CLDR-14513,86139,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,17/Feb/21 9:57 AM,10/Aug/21 1:55 PM,08/Sep/21 3:09 PM,05/Mar/21 8:29 AM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,BRS,,,,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2021-02-18T16:45:04.000-0800"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d1zj:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+misc Survey Tool BRS,CLDR-14491,86107,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,10/Feb/21 9:59 AM,21/Apr/21 2:54 PM,08/Sep/21 3:09 PM,21/Apr/21 2:54 PM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Infrastructure,,misc Survey Tool BRS,,Kristi Lee,Thomas Bishop,,,5ca62348fa160e67c4025b49,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,CLDR-14093,,CLDR-13956,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=9}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":9,""lastUpdated"":""2021-02-23T08:33:18.000-0800"",""stateCount"":9,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":9,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d1sf:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,2021-03-22 19:56:58.153,,,,,,,,,,,,,10/Feb/21 10:02 AM;5cae14ea9c21b237caab46fc;Task: “Run the necessary CLDRModify passes” – [http://cldr.unicode.org/development/cldr-big-red-switch/cldrmodify-passes|http://cldr.unicode.org/development/cldr-big-red-switch/cldrmodify-passes],"12/Feb/21 9:47 AM;5cae14ea9c21b237caab46fc;Seven PRs have been merged, through [https://github.com/unicode-org/cldr/pull/1032|https://github.com/unicode-org/cldr/pull/1032|smart-link] 
+
+I think that’s it for this task. Note that seed/annotations was skipped this time, as it was last August, due to conflict with Annotations.java being hard-coded for ""common"", not ""seed""",22/Feb/21 12:54 PM;5cae14ea9c21b237caab46fc;Re-opening this ticket for another BRS task – actually it’s the same CLDRModify task but repeated at a later stage in BRS,"01/Mar/21 12:42 PM;5cae14ea9c21b237caab46fc;A bunch of PRs were merged for CLDRModify. This last one was closed without merging due to problems with locale “my” (cf. [https://unicode-org.atlassian.net/browse/CLDR-14549|https://unicode-org.atlassian.net/browse/CLDR-14549|smart-link] ):
+
+[https://github.com/unicode-org/cldr/pull/1070|https://github.com/unicode-org/cldr/pull/1070|smart-link] 
+
+I’m not sure whether any further CLDRModify work should be done for this BRS task with this ticket?
+
+I’m also using this ticket for some work today on revising/cloning my v39 tickets.",08/Mar/21 7:23 AM;5cae14ea9c21b237caab46fc;I did the remaining passes of CLDRModify. No changes resulted.,22/Mar/21 12:56 PM;5ca62348fa160e67c4025b49;[~accountid:5cae14ea9c21b237caab46fc] Should this be changed to Reviewing?,"22/Mar/21 2:24 PM;5cae14ea9c21b237caab46fc;[~accountid:5ca62348fa160e67c4025b49] Yes, thanks, I’ve just set it to Reviewing.",Done
+"CLONE - Review sensitive terminology in code and data files, part 2",CLDR-14233,85697,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Obsolete,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,13/Oct/20 1:38 PM,14/Oct/20 4:44 PM,08/Sep/21 3:09 PM,14/Oct/20 4:44 PM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"[https://unicode-org.atlassian.net/browse/CLDR-13922|https://unicode-org.atlassian.net/browse/CLDR-13922] removed references to ""grandfathered"" in the CLDR spec where possible. But there are other instances of sensitive terminology in CLDR code and data that should be reviewed as well. As Markus points out in a comment for CLDR-13922: In CLDR code and in data files, there are also uses of “grandfathered”, “master”, “slave”, “blacklist”, and “crazy”. Need to investigate these and reword as appropriate.
+
+Note that the name of language ""den"" is some variant of “Slave” or “Slavey” in many locales.
+
+This is a followup for CLDR 39 or later to investigate and address any items not handled under the original v38 ticket [https://unicode-org.atlassian.net/browse/CLDR-14226|https://unicode-org.atlassian.net/browse/CLDR-14226|smart-link] ",,Markus Scherer,Peter Edberg,,,5abac250c8a6c4195fbeec16,5b29558fe478c9080efacbde,,,,,,,,,,,,,CLDR-14226,,CLDR-13922,,,{},,,,,,,,0|i0cz9b:,,,,,,,,,,,,,,2020-10-14 17:17:04.877,final,,,,,,,,,,,,14/Oct/20 10:17 AM;5abac250c8a6c4195fbeec16;I believe the three PRs for [https://unicode-org.atlassian.net/browse/CLDR-14226|https://unicode-org.atlassian.net/browse/CLDR-14226|smart-link] from Peter & me address all fixable uses of these terms. So I think we can close this follow-up ticket here.,"14/Oct/20 3:28 PM;5b29558fe478c9080efacbde;OK, thanks",,,,,,Done
+Review sensitive terminology in code and data files,CLDR-14226,85683,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,08/Oct/20 2:46 PM,14/Oct/20 10:15 AM,08/Sep/21 3:09 PM,14/Oct/20 10:15 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"https://unicode-org.atlassian.net/browse/CLDR-13922 removed references to ""grandfathered"" in the CLDR spec where possible. But there are other instances of sensitive terminology in CLDR code and data that should be reviewed as well. As Markus points out in a comment for CLDR-13922: In CLDR code and in data files, there are also uses of “grandfathered”, “master”, “slave”, “blacklist”, and “crazy”. Need to investigate these and reword as appropriate.
+
+Note that the name of language ""den"" is some variant of “Slave” or “Slavey” in many locales.",,Mark Davis,Markus Scherer,Peter Edberg,,5b1fa41abe73de20759a87c2,5abac250c8a6c4195fbeec16,5b29558fe478c9080efacbde,,,,,,,,,,,,,,CLDR-13922,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2020-10-14T10:12:44.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cz67:,,,Markus Scherer,5abac250c8a6c4195fbeec16,,,,,,,,,,2020-10-09 16:23:06.442,final,,,,,,,,,,,,"09/Oct/20 9:23 AM;5abac250c8a6c4195fbeec16;Thanks\!
+
+I had been looking at someone’s list who had grepped over CLDR among other projects. I am sure there are false positives.",12/Oct/20 10:17 AM;5abac250c8a6c4195fbeec16;Reopening. This is not “Done” yet. I had just looked at one of the terms in some of the files.,12/Oct/20 10:18 AM;5abac250c8a6c4195fbeec16;I also wasn’t really offering to own it. I am not sure I have the time to finish it. I thought Peter said he could take it.,"12/Oct/20 3:12 PM;5b29558fe478c9080efacbde;Sorry, I did offer to own it but had not realized [https://github.com/unicode-org/cldr/pull/769|https://github.com/unicode-org/cldr/pull/769|smart-link]  was only addressing part of this, so had closed this and assigned to you. Now re-opened and assigned to myself to handle the remainder.","12/Oct/20 3:18 PM;5abac250c8a6c4195fbeec16;Thanks\!
+
+If I do find more time, I might offer another partial PR.",13/Oct/20 1:42 PM;5b29558fe478c9080efacbde;OK I created [https://unicode-org.atlassian.net/browse/CLDR-14233|https://unicode-org.atlassian.net/browse/CLDR-14233|smart-link] as a post-v38 ticket to address remaining issues that can be handled. I think the two PRs under the current ticket address most or all of what we can do in v38. Moving this ticket to Reviewing for now (unless Markus comes up with another PR … :),,Done
+Button for manually triggering commit checker,CLDR-14205,85643,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,29/Sep/20 8:02 AM,14/Oct/20 8:22 AM,08/Sep/21 3:09 PM,13/Oct/20 2:00 PM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Infrastructure,,Related: ICU-20233,,Kristi Lee,Steven R. Loomis,,,5ca62348fa160e67c4025b49,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,ICU-20233,,30/Sep/20 9:10 AM;srl295;image-20200930-161020.png;https://unicode-org.atlassian.net/secure/attachment/15061/image-20200930-161020.png,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-10-13T08:39:41.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cyxb:,,,Kristi Lee,5ca62348fa160e67c4025b49,,,,,,,,,,2020-10-08 16:31:20.375,,,,,,,,,,,,,"30/Sep/20 9:10 AM;5af4a8718a1abd1427952ed9;testing out..
+
+!image-20200930-161020.png|width=379,height=556!",08/Oct/20 9:31 AM;5ca62348fa160e67c4025b49;[~accountid:5af4a8718a1abd1427952ed9] [~accountid:5b29558fe478c9080efacbde] Seems like this should be 38. Can I change to 38?,"12/Oct/20 9:47 AM;5af4a8718a1abd1427952ed9;[~accountid:5ca62348fa160e67c4025b49] It’s after the 38 maint branch was cut, and applies to the current master (39). Could add both 38 and 39 if desired, but this is otherwise not a priority to merge into 38.",,,,,Done
+BRS A26.6 Create a simple tool to check for CLDR data that isn't converted,CLDR-14202,85640,Tests,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,28/Sep/20 3:59 PM,22/Mar/21 8:05 AM,08/Sep/21 3:09 PM,22/Mar/21 8:05 AM,39,,,,,,,,,,,,,,,,,,,,,,BRS,infrastructure,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"It is very difficult to do A26.6, so I wrote a quick and dirty tool to do a comparison.
+
+It just finds all the values in ldml files, and sees if they are in ICU. So the test is rough, but proved useful in identifying problems.
+
+TODO
+
+# The current code just looks for quoted values in ICU. Should be changed to read the files with UResourceBundle. That will solve some mismatches because of formatting.
+# It could be extended to JSON, reading the JSON files instead of ICU. The only thing we need is a bit of code that extracts all the values from a JSON file.
+# The inputs are hard-coded, and should use command-line arguments instead.
+# etc.
+
+This can't be a unit test, because it works off of the cldr-staging production files, and the ICU data built from them.",,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-10-15T07:16:27.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cywn:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,,,,,"14/Oct/20 8:40 PM;5b1fa41abe73de20759a87c2;Changing fixVersion to 39, since the code for the tool doesn’t have to be in 38.",,,,,,,Done
+"Revert ms addition of japanese era names, ti addition of timezone names in English",CLDR-14160,85564,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,02/Sep/20 10:09 AM,19/Oct/20 5:43 AM,08/Sep/21 3:09 PM,19/Oct/20 5:43 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"From review of CLDR pre-alpha integration to ICU and CLDR TC discussion, decided to revert:
+* ms addition of some era names for japanese calendar
+* ti addition of some timezone names in English (in some clases replacing the ti name)",,Peter Edberg,Yoshito Umaoka,,,5b29558fe478c9080efacbde,5b295586e379aa18a9ef35b8,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-09-02T21:26:49.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cyfr:,,,Yoshito Umaoka,5b295586e379aa18a9ef35b8,,,,,,,,,,2020-10-19 12:42:52.32,,,,,,,,,,,,,19/Oct/20 5:42 AM;5b295586e379aa18a9ef35b8;LGTM,,,,,,,Done
+Algorithmic locales should handle triple uparrow,CLDR-14127,85516,Enhancement,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Thomas Bishop,5cae14ea9c21b237caab46fc,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,26/Aug/20 4:32 PM,01/Mar/21 12:08 PM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,srl,,"The CLDRFileTransformer seems to explicitly drop triple-uparrow (↑↑↑) in values. I had to add the following afterwards. See CLDR-14119
+
+
+{code:xml}
+index a9ec946e7d..139c6ec9e5 100644
+--- a/common/main/sr_Latn.xml
++++ b/common/main/sr_Latn.xml
+@@ -9335,12 +9335,15 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+                        </unit>
+                        <unit type=""length-furlong"">
+                                <displayName>furlonzi</displayName>
++                               <unitPattern count=""one"">↑↑↑</unitPattern>
+                                <unitPattern count=""few"">{0} fur</unitPattern>
++                               <unitPattern count=""other"">↑↑↑</unitPattern>
+                        </unit>
+                        <unit type=""length-fathom"">
+                                <displayName>hv</displayName>
+                                <unitPattern count=""one"">{0} fth</unitPattern>
+                                <unitPattern count=""few"">{0} fth</unitPattern>
++                               <unitPattern count=""other"">↑↑↑</unitPattern>
+                        </unit>
+                        <unit type=""length-nautical-mile"">
+                                <displayName>nmi</displayName>
+@@ -9876,6 +9879,18 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+                                <unitPattern count=""few"">{0} cm</unitPattern>
+                                <unitPattern count=""other"">{0} cm</unitPattern>
+                        </unit>
++                       <unit type=""length-furlong"">
++                               <displayName>furlonzi</displayName>
++                               <unitPattern count=""one"">↑↑↑</unitPattern>
++                               <unitPattern count=""few"">{0} fur</unitPattern>
++                               <unitPattern count=""other"">↑↑↑</unitPattern>
++                       </unit>
++                       <unit type=""length-fathom"">
++                               <displayName>hv</displayName>
++                               <unitPattern count=""one"">{0} fth</unitPattern>
++                               <unitPattern count=""few"">{0} fth</unitPattern>
++                               <unitPattern count=""other"">↑↑↑</unitPattern>
++                       </unit>
+                        <unit type=""length-millimeter"">
+                                <displayName>mm</displayName>
+                                <unitPattern count=""one"">{0} mm</unitPattern>
+
+{code}
+",,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0cy53:,,,,,,,,,,,,,,,final,,,,,,,,,,,,,,,,,,,In Progress
+misc Survey Tool BRS,CLDR-14093,85462,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,17/Aug/20 11:16 AM,09/Mar/21 9:08 AM,08/Sep/21 3:09 PM,05/Oct/20 8:25 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Infrastructure,,misc Survey Tool BRS,,Thomas Bishop,,,,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=9}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":9,""lastUpdated"":""2020-09-02T09:08:24.000-0700"",""stateCount"":9,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":9,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxt3:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,"17/Aug/20 12:29 PM;5cae14ea9c21b237caab46fc;BRS line 14
+
+A05.5: Run the necessary CLDRModify passes as outlined in link to right. Should be rerun whenever we make significant data changes. (For LRS, abbreviate run as check).
+
+[http://cldr.unicode.org/development/cldr-big-red-switch/cldrmodify-passes|http://cldr.unicode.org/development/cldr-big-red-switch/cldrmodify-passes]","22/Aug/20 6:59 AM;5cae14ea9c21b237caab46fc;BRS line 23
+
+A07.6 Update to latest version of guava and gson libs, if not done in SBRS
+
+{noformat}$ cat tools/java/libs/gson-version.txt
+gson 2.8.5 2018-05-22{noformat}
+
+[https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar|https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar]
+
+[https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.6/|https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.6/]
+
+Downloaded gson-2.8.6.jar and gson-2.8.6-sources.jar from [https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar|https://search.maven.org/artifact/com.google.code.gson/gson/2.8.6/jar] and saved them in tools/java/libs. Renamed them to gson.jar and gson-sources.jar, replacing older versions. Edited gson-version.txt, replacing 2.8.5 with 2.8.6, and replacing 2018-05-22 with 2019-10-04
+per dates [https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.6/|https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.6/]","22/Aug/20 11:19 AM;5cae14ea9c21b237caab46fc;BRS A11 Update Language/Script/Region Subtags
+
+[http://cldr.unicode.org/development/updating-codes/update-languagescriptregion-subtags|http://cldr.unicode.org/development/updating-codes/update-languagescriptregion-subtags]
+
+No ""M"" in second column of iso-639-3.tab, OK.
+
+I don’t understand this instruction: “*Record* the latest version that's been synced as a meta-data//This is new (Aug 2020)\!”
+
+I’ve done all the steps before that, and made a draft PR: [https://github.com/unicode-org/cldr/pull/660|https://github.com/unicode-org/cldr/pull/660|smart-link] ","22/Aug/20 11:23 AM;5cae14ea9c21b237caab46fc;Per instructions “Do validity checks and regenerate…” I ran TestValidity.main().
+
+Program arguments: -e9
+
+VM arguments: -ea
+
+Output:
+
+{noformat}TestValidity {
+  TestBasicValidity (0.001s) Passed
+  TestBothDirections (0.030s) Passed
+  TestCompatibility {
+    Error: (TestValidity.java:194) subdivision:escn:deprecated => regular // add to exception list if really un-deprecated
+  } (1.001s) FAILED (1 failure(s))
+  TestLanguageTagCanonicalizer (0.017s) Passed
+  TestLanguageTagParser (0.000s) Passed
+  TestLstrConsistency {
+    Error: (TestValidity.java:491) Missing aliases for supplementalMetadata: 7
+<languageAlias type=""drr"" replacement=""kzk"" reason=""deprecated""/> <!-- Dororo ⇒ Kazukuru -->
+<languageAlias type=""gli"" replacement=""kzk"" reason=""deprecated""/> <!-- Guliguli ⇒ Kazukuru -->
+<languageAlias type=""kxl"" replacement=""kru"" reason=""deprecated""/> <!-- Nepali Kurux ⇒ Kurukh -->
+<languageAlias type=""nxu"" replacement=""bpp"" reason=""deprecated""/> <!-- Narau ⇒ Kaure -->
+<languageAlias type=""thw"" replacement=""ola"" reason=""deprecated""/> <!-- Thudam ⇒ Walungge -->
+<languageAlias type=""xrq"" replacement=""dmw"" reason=""deprecated""/> <!-- Karranga ⇒ Mudburra -->
+<languageAlias type=""zir"" replacement=""scv"" reason=""deprecated""/> <!-- Ziriya ⇒ Sheni -->
+    Warning: (TestValidity.java:497) Changed aliases from LSTR, just double-check: 3
+	current=<languageAlias type=""drh"" replacement=""mn"" reason=""deprecated""/> <!-- Darkhat ⇒ Mongolian -->
+	lstr=<languageAlias type=""drh"" replacement=""khk"" reason=""deprecated""/> <!-- Darkhat ⇒ Halh Mongolian -->
+	current=<languageAlias type=""drw"" replacement=""fa_af"" reason=""deprecated""/> <!-- Darwazi ⇒ Dari -->
+	lstr=<languageAlias type=""drw"" replacement=""prs"" reason=""deprecated""/> <!-- Darwazi ⇒ Dari -->
+	current=<languageAlias type=""tnf"" replacement=""fa_af"" reason=""deprecated""/> <!-- Tangshewi ⇒ Dari -->
+	lstr=<languageAlias type=""tnf"" replacement=""prs"" reason=""deprecated""/> <!-- Tangshewi ⇒ Dari -->
+  } (0.844s) FAILED (1 failure(s), 1 warning(s))
+  TestUnits {
+    Warning: (TestValidity.java:320) code has overlong subcode: acceleration-g-force should have short alias in bcp47 accel-g-force
+    Warning: (TestValidity.java:320) code has overlong subcode: acceleration-meter-per-square-second should have short alias in bcp47 accel-meter-per-square-second
+    Warning: (TestValidity.java:320) code has overlong subcode: angle-revolution should have short alias in bcp47 angle-revol
+    Warning: (TestValidity.java:320) code has overlong subcode: area-square-centimeter should have short alias in bcp47 area-square-cmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: area-square-kilometer should have short alias in bcp47 area-square-kmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: concentr-milligram-per-deciliter should have short alias in bcp47 concentr-mgram-per-dliter
+    Warning: (TestValidity.java:320) code has overlong subcode: concentr-millimole-per-liter should have short alias in bcp47 concentr-mmole-per-liter
+    Warning: (TestValidity.java:320) code has overlong subcode: concentr-permyriad should have short alias in bcp47 concentr-permyria
+    Warning: (TestValidity.java:320) code has overlong subcode: concentr-permillion should have short alias in bcp47 concentr-permilli
+    Warning: (TestValidity.java:320) code has overlong subcode: consumption-liter-per-100-kilometer should have short alias in bcp47 consumpt-liter-per-100-kmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: consumption-liter-per-kilometer should have short alias in bcp47 consumpt-liter-per-kmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: consumption-mile-per-gallon should have short alias in bcp47 consumpt-mile-per-gallon
+    Warning: (TestValidity.java:320) code has overlong subcode: consumption-mile-per-gallon-imperial should have short alias in bcp47 consumpt-mile-per-gallon-imperial
+    Warning: (TestValidity.java:320) code has overlong subcode: duration-microsecond should have short alias in bcp47 duration-microsec
+    Warning: (TestValidity.java:320) code has overlong subcode: duration-millisecond should have short alias in bcp47 duration-millisec
+    Warning: (TestValidity.java:320) code has overlong subcode: duration-nanosecond should have short alias in bcp47 duration-nanosec
+    Warning: (TestValidity.java:320) code has overlong subcode: electric-milliampere should have short alias in bcp47 electric-milliamp
+    Warning: (TestValidity.java:320) code has overlong subcode: energy-foodcalorie should have short alias in bcp47 energy-foodcal
+    Warning: (TestValidity.java:320) code has overlong subcode: energy-kilocalorie should have short alias in bcp47 energy-kilocal
+    Warning: (TestValidity.java:320) code has overlong subcode: energy-kilojoule should have short alias in bcp47 energy-kjoule
+    Warning: (TestValidity.java:320) code has overlong subcode: energy-electronvolt should have short alias in bcp47 energy-electron
+    Warning: (TestValidity.java:320) code has overlong subcode: frequency-gigahertz should have short alias in bcp47 freq-gigahertz
+    Warning: (TestValidity.java:320) code has overlong subcode: frequency-hertz should have short alias in bcp47 freq-hertz
+    Warning: (TestValidity.java:320) code has overlong subcode: frequency-kilohertz should have short alias in bcp47 freq-khertz
+    Warning: (TestValidity.java:320) code has overlong subcode: frequency-megahertz should have short alias in bcp47 freq-megahertz
+    Warning: (TestValidity.java:320) code has overlong subcode: graphics-dot-per-centimeter should have short alias in bcp47 graphics-dot-per-cmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: graphics-megapixel should have short alias in bcp47 graphics-megapixe
+    Warning: (TestValidity.java:320) code has overlong subcode: graphics-pixel-per-centimeter should have short alias in bcp47 graphics-pixel-per-cmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-100-kilometer should have short alias in bcp47 length-100-kmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-astronomical-unit should have short alias in bcp47 length-astro-unit
+    Warning: (TestValidity.java:320) code has overlong subcode: length-centimeter should have short alias in bcp47 length-cmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-decimeter should have short alias in bcp47 length-dmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-kilometer should have short alias in bcp47 length-kmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-micrometer should have short alias in bcp47 length-micmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-mile-scandinavian should have short alias in bcp47 length-mile-scand
+    Warning: (TestValidity.java:320) code has overlong subcode: length-millimeter should have short alias in bcp47 length-mmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: length-nanometer should have short alias in bcp47 length-nanomete
+    Warning: (TestValidity.java:320) code has overlong subcode: length-picometer should have short alias in bcp47 length-pmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: light-solar-luminosity should have short alias in bcp47 light-solar-luminosi
+    Warning: (TestValidity.java:320) code has overlong subcode: mass-microgram should have short alias in bcp47 mass-migram
+    Warning: (TestValidity.java:320) code has overlong subcode: mass-milligram should have short alias in bcp47 mass-mgram
+    Warning: (TestValidity.java:320) code has overlong subcode: power-horsepower should have short alias in bcp47 power-horsep
+    Warning: (TestValidity.java:320) code has overlong subcode: power-milliwatt should have short alias in bcp47 power-mwatt
+    Warning: (TestValidity.java:320) code has overlong subcode: pressure-atmosphere should have short alias in bcp47 pressure-atmosphe
+    Warning: (TestValidity.java:320) code has overlong subcode: pressure-hectopascal should have short alias in bcp47 pressure-hpascal
+    Warning: (TestValidity.java:320) code has overlong subcode: pressure-millimeter-ofhg should have short alias in bcp47 pressure-mmeter-ofhg
+    Warning: (TestValidity.java:320) code has overlong subcode: pressure-kilopascal should have short alias in bcp47 pressure-kilopasc
+    Warning: (TestValidity.java:320) code has overlong subcode: pressure-megapascal should have short alias in bcp47 pressure-megapasc
+    Warning: (TestValidity.java:320) code has overlong subcode: speed-kilometer-per-hour should have short alias in bcp47 speed-kmeter-per-hour
+    Warning: (TestValidity.java:320) code has overlong subcode: temperature-celsius should have short alias in bcp47 temp-celsius
+    Warning: (TestValidity.java:320) code has overlong subcode: temperature-fahrenheit should have short alias in bcp47 temp-fahren
+    Warning: (TestValidity.java:320) code has overlong subcode: temperature-generic should have short alias in bcp47 temp-generic
+    Warning: (TestValidity.java:320) code has overlong subcode: temperature-kelvin should have short alias in bcp47 temp-kelvin
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-centiliter should have short alias in bcp47 volume-cliter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-cubic-centimeter should have short alias in bcp47 volume-cubic-cmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-cubic-kilometer should have short alias in bcp47 volume-cubic-kmeter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-deciliter should have short alias in bcp47 volume-dliter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-hectoliter should have short alias in bcp47 volume-hliter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-megaliter should have short alias in bcp47 volume-megliter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-milliliter should have short alias in bcp47 volume-mliter
+    Warning: (TestValidity.java:320) code has overlong subcode: volume-tablespoon should have short alias in bcp47 volume-tblspoon
+    Warning: (TestValidity.java:320) code has overlong subcode: acceleration-meter-per-second-squared should have short alias in bcp47 accel-meter-per-second-squared
+    Warning: (TestValidity.java:320) code has overlong subcode: consumption-liter-per-100kilometers should have short alias in bcp47 consumpt-liter-per-100km
+    Warning: (TestValidity.java:320) code has overlong subcode: pressure-millimeter-of-mercury should have short alias in bcp47 pressure-mmeter-of-mercury
+    Warning: (TestValidity.java:320) code has overlong subcode: proportion-karat should have short alias in bcp47 proporti-karat
+  } (0.025s) ALERT (65 warning(s))
+} (1.924s) FAILED (2 failure(s), 66 warning(s))
+
+Error summary:
+TestValidity/TestCompatibility
+TestValidity/TestLstrConsistency
+
+<< 2 TEST(S) FAILED >>
+{noformat}
+
+The errors are
+
+TestCompatibility \{
+Error: (TestValidity.java:194) subdivision:escn:deprecated => regular // add to exception list if really un-deprecated
+
+and
+
+TestLstrConsistency \{
+Error: (TestValidity.java:491) Missing aliases for supplementalMetadata: 7
+<languageAlias type=""drr"" replacement=""kzk"" reason=""deprecated""/> <\!-- Dororo ⇒ Kazukuru -->
+<languageAlias type=""gli"" replacement=""kzk"" reason=""deprecated""/> <\!-- Guliguli ⇒ Kazukuru -->
+<languageAlias type=""kxl"" replacement=""kru"" reason=""deprecated""/> <\!-- Nepali Kurux ⇒ Kurukh -->
+<languageAlias type=""nxu"" replacement=""bpp"" reason=""deprecated""/> <\!-- Narau ⇒ Kaure -->
+<languageAlias type=""thw"" replacement=""ola"" reason=""deprecated""/> <\!-- Thudam ⇒ Walungge -->
+<languageAlias type=""xrq"" replacement=""dmw"" reason=""deprecated""/> <\!-- Karranga ⇒ Mudburra -->
+<languageAlias type=""zir"" replacement=""scv"" reason=""deprecated""/> <\!-- Ziriya ⇒ Sheni --> ",09/Sep/20 11:25 AM;5cae14ea9c21b237caab46fc;I’m also using this ticket for helping with the Azure migration.,29/Sep/20 11:58 AM;5cae14ea9c21b237caab46fc;Also for [+CLDR BRS 27.14 (v38)+|https://unicode-org.atlassian.net/issues/?filter=10129],,Done
+BRS A05.7 - TSV generation with charts instead of compare en.java,CLDR-14081,85444,Bug,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,,Mark Davis,5b1fa41abe73de20759a87c2,Meike Hubert,5c623bba27daf22edc5da803,Meike Hubert,5c623bba27daf22edc5da803,12/Aug/20 9:55 AM,21/Mar/21 8:55 PM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"BRS A05.7 task:
+* Analyze differences between en_GB and en_001 (main and annotations), determine which data needs to move up to en_001 and any necessary corrections.
+
+To generate files for comparison, currently requires running ""Compare en.java"" locally.
+
+Could be moved to TSV, and be done in parallel to charts creation.
+
+Look into adding TSV generation to charts, and run once in the background.",,Meike Hubert,,,,5c623bba27daf22edc5da803,,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0cxp3:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+cldr JSON repos need a 37.0.0 tag,CLDR-13914,85235,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed non-repo,Steven R. Loomis,5af4a8718a1abd1427952ed9,Dave Rolsky,557058:a3e10f4a-a89e-4d66-88a9-a2039e49898e,Dave Rolsky,557058:a3e10f4a-a89e-4d66-88a9-a2039e49898e,26/Jun/20 11:17 AM,23/Oct/20 2:17 PM,08/Sep/21 3:09 PM,23/Oct/20 2:17 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,It looks like the repo content was updated based on the 37.0.0 release but there are no corresponding tags in any of the repos I've checked. I know there's discussion of moving to a different repo structure but it'd still be useful to fix this for now.,,Dave Rolsky,John Emmons,Peter Edberg,Steven R. Loomis,557058:a3e10f4a-a89e-4d66-88a9-a2039e49898e,5b353e5c1434ca6683d9b0ad,5b29558fe478c9080efacbde,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,{},,,,,,,,0|i0cwen:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,2020-10-15 15:42:56.553,,,,,,,,,,,,,15/Oct/20 8:42 AM;5af4a8718a1abd1427952ed9;added a tag and a release for 37 ( and for 38 beta) [https://github.com/unicode-cldr/cldr-core/releases|https://github.com/unicode-cldr/cldr-core/releases],,,,,,,Done
+BRS Tasks for CLDR 37,CLDR-13596,84720,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,17/Feb/20 2:48 PM,06/May/20 9:16 AM,08/Sep/21 3:09 PM,06/May/20 9:16 AM,37,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,BRS Tasks for CLDR 37,,John Emmons,,,,5b353e5c1434ca6683d9b0ad,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-02-18T09:38:32.000-0800"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ct87:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,rc,,,,,,,,,,,,,,,,,,,Done
+BRS Fix unit tests for cldr-staging/production,CLDR-13300,84285,Tests,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,22/Sep/19 8:41 AM,11/Oct/20 9:55 PM,08/Sep/21 3:09 PM,11/Oct/20 9:55 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,infrastructure,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"I made a test run on cldr-staging/production (-DCLDR_DIR=.../cldr-staging/production). No showstoppers for v36, but issues that we should address in v37.
+
+1. I had to add empty directories for the following. A more permanent test would be to modify the unit-tests to not depend on those directories in production data/exemplars/seed/  annotations/
+  casing/
+  collation/
+  main/
+  rbnf/
+  transforms/
+
+
+2. AnnotationsCLDR/TestAnnotations/testAnnotationPaths
+CLDR/TestAnnotations/testEmojiImages
+CLDR/TestAnnotations/testSuperfluousAnnotationPathsAll of the above appear to because the annotations/root.xml file is empty (correctly, for production data). So that also needs a test tweak.
+
+
+3. CLDR/TestDisplayAndInputProcessor/TestAdlamNasalizationThe test is for a particular file in seed/, which doesn't exist. So that also needs a test tweak.
+
+
+4. CLDR/TestInheritance/TestLikelyAndDefaultConsistency
+Not sure what this one is from. Looks like a test problem, though.
+    TestLikelyAndDefaultConsistency \{      Error: (TestInheritance.java:261) Missing base locale for: root    } (0,029s) FAILED (1 failure(s))
+
+
+5. CLDR/TestCLDRUtils/TestVariantNameThe data looks ok. The problem is in the CLDRFile code when getting //ldml/localeDisplayNames/languages/language\[@type=""en_US""]\[@alt=""short""], it is returning en_US. So not a showstopper
+    TestVariantName \{      Error: (TestCLDRUtils.java:69) : Test variant formatting combinedShort en_US_POSIX: expected ""anglais \[É.-U.] (informatique)"", got ""en_US (informatique)""    } (0,062s) FAILED (1 failure(s))",,Jeffrice Wilson,Mark Davis,thị hồng nhung lê,,5daf285a9af8410c368c7252,5b1fa41abe73de20759a87c2,5c4bec335f99774462dc06d9,,,,,,,,,,,CLDR-13976,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-10-11T21:54:20.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cqjj:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,spec-beta,,,,,,,,,,,,"11/Oct/20 1:52 PM;5b1fa41abe73de20759a87c2;Summary
+
+{noformat}CLDR/TestAnnotations/testEmojiImages
+CLDR/TestAnnotations/testSuperfluousAnnotationPaths
+CLDR/TestCLDRFile/testExtraPaths
+CLDR/TestCLDRUtils/TestVariantName
+CLDR/TestCheckCLDR/TestCheckNewRootFailure
+CLDR/TestIdentity/TestIdentityVsFilename
+CLDR/TestInheritance/TestLikelyAndDefaultConsistency
+CLDR/TestUnits/TestGender{noformat}
+
+{noformat}testEmojiImages {
+  Error: (TestAnnotations.java:308) emoji_00a9.png missing; copyright{noformat}
+
+{noformat}testExtraPaths{
+Error: (TestAll.java:161) org.unicode.cldr.util.SimpleFactory$NoSourceDirectoryException: 
+Unable to determine the source directory for locale lij
+org.unicode.cldr.util.SimpleFactory$NoSourceDirectoryException: Unable to determine the source directory for locale lij{noformat}
+
+{noformat}TestCheckNewRootFailure {
+  Error: (TestCheckCLDR.java:536) BUILD Missing failure message for value=↑↑↑; path=//ldml/annotations/annotation[@cp=""😀""][@type=""tts""]
+  Error: (TestCheckCLDR.java:536) SUBMISSION Missing failure message for value=↑↑↑; path=//ldml/annotations/annotation[@cp=""😀""][@type=""tts""]
+  Error: (TestCheckCLDR.java:536) VETTING Missing failure message for value=↑↑↑; path=//ldml/annotations/annotation[@cp=""😀""][@type=""tts""]
+  Error: (TestCheckCLDR.java:536) FINAL_TESTING Missing failure message for value=↑↑↑; path=//ldml/annotations/annotation[@cp=""😀""][@type=""tts""]{noformat}
+
+{noformat}TestIdentityVsFilename {
+  Error: (TestAll.java:161) java.lang.IllegalArgumentException: path: /Users/markdavis/GitHub/macchiati/cldr-staging/production/exemplars/main/; string: .*
+  ...
+  Caused by: java.lang.IllegalArgumentException: Directory doesn't exist:	/Users/markdavis/GitHub/macchiati/cldr-staging/production/exemplars/main{noformat}
+
+{noformat}TestLikelyAndDefaultConsistency {
+  Error: (TestInheritance.java:261) Missing base locale for: root{noformat}
+
+
+
+
+{noformat}TestGender {
+
+Error: (TestAll.java:161) com.google.common.util.concurrent.UncheckedExecutionException: org.unicode.cldr.util.SimpleFactory$NoSourceDirectoryException: Unable to determine the source directory for locale lij
+
+com.google.common.util.concurrent.UncheckedExecutionException: org.unicode.cldr.util.SimpleFactory$NoSourceDirectoryException: Unable to determine the source directory for locale lij{noformat}",,,,,,,Done
+v36 SBRS tasks,CLDR-13051,83833,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,major,Fixed,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,22/May/19 8:41 AM,04/Dec/20 10:40 AM,08/Sep/21 3:09 PM,02/Oct/19 8:42 AM,36,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Ticket for SBRS tasks for v36....,,John Emmons,Maks Sava,,,5b353e5c1434ca6683d9b0ad,5da816f1bb87a40c4231428a,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2019-05-24T12:05:44.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0cnr3:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,2019-10-17 07:47:33.688,dsub,,,,,,,,,,,,"17/Oct/19 12:47 AM;5da816f1bb87a40c4231428a;
+
+{code:actionscript}U+1F4A6{code}
+
+",,,,,,,Done
+CLDRTransforms needs to preserve ↑↑↑ for logical groups,CLDR-15006,86850,Bug,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,24/Aug/21 2:33 PM,25/Aug/21 9:28 AM,08/Sep/21 3:09 PM,,41,,,,,,,,,,,,,,,,,,,,,,BRS,infrastructure,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"CLDRTransforms does not ""copy over"" `↑↑↑` items.  This is especially a problem where logical grouping is concerned. ",,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,"{build={count=2, dataType=build, failedBuildCount=0, successfulBuildCount=2, unknownBuildCount=0}, json={""cachedValue"":{""errors"":[],""summary"":{""build"":{""overall"":{""count"":2,""lastUpdated"":null,""failedBuildCount"":0,""successfulBuildCount"":2,""unknownBuildCount"":0,""dataType"":""build""},""byInstanceType"":{""cloud-providers"":{""count"":2,""name"":""Other providers""}}}}},""isStale"":true}}",,,,,,,,0|i0d6dj:,,,,,,,,,,,,,,,,,,,,,,,,,,,"24/Aug/21 3:01 PM;5af4a8718a1abd1427952ed9;To work around the issue, see for example [https://github.com/unicode-org/cldr/pull/1463/commits/adebffe67d757efa860fc32f3b1c99926aaa3d16|https://github.com/unicode-org/cldr/pull/1463/commits/adebffe67d757efa860fc32f3b1c99926aaa3d16|smart-link] 
+
+
+
+* In a typical locale, changing one item in a group requires voting for the ↑↑↑ which make up the group.
+* CLDRTransforms ought to mimic this by adding such ↑↑↑ entries as are needed.
+Alternatively, just copy over _all_ items, including triple up arrow.
+
+{noformat}From adebffe67d757efa860fc32f3b1c99926aaa3d16 Mon Sep 17 00:00:00 2001
+From: ""Steven R. Loomis"" <srl295@gmail.com>
+Date: Tue, 24 Aug 2021 16:58:43 -0500
+Subject: [PATCH] =?UTF-8?q?CLDR-14969=20v40=20BRS=C2=A7A21=20algorithmic?=
+ =?UTF-8?q?=20locales=20-=20sr=5FLatn?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- needed to re-add some triple-up-arrow entries to work around CLDR-15006
+---
+ common/main/sr_Latn.xml | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/common/main/sr_Latn.xml b/common/main/sr_Latn.xml
+index 7ee5bec6c3..e35a5be400 100644
+--- a/common/main/sr_Latn.xml
++++ b/common/main/sr_Latn.xml
+@@ -7938,7 +7938,19 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+ 			</unit>
+ 			<unit type=""concentr-permyriad"">
+ 				<gender>inanimate</gender>
++				<displayName>↑↑↑</displayName>
+ 				<unitPattern count=""one"">{0}‱</unitPattern>
++				<unitPattern count=""one"" case=""accusative"">↑↑↑</unitPattern>
++				<unitPattern count=""one"" case=""genitive"">↑↑↑</unitPattern>
++				<unitPattern count=""one"" case=""instrumental"">↑↑↑</unitPattern>
++				<unitPattern count=""few"">↑↑↑</unitPattern>
++				<unitPattern count=""few"" case=""accusative"">↑↑↑</unitPattern>
++				<unitPattern count=""few"" case=""genitive"">↑↑↑</unitPattern>
++				<unitPattern count=""few"" case=""instrumental"">↑↑↑</unitPattern>
++				<unitPattern count=""other"">↑↑↑</unitPattern>
++				<unitPattern count=""other"" case=""accusative"">↑↑↑</unitPattern>
++				<unitPattern count=""other"" case=""genitive"">↑↑↑</unitPattern>
++				<unitPattern count=""other"" case=""instrumental"">↑↑↑</unitPattern>
+ 			</unit>
+ 			<unit type=""concentr-mole"">
+ 				<gender>inanimate</gender>
+@@ -7948,7 +7960,13 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+ 				<unitPattern count=""one"" case=""genitive"">{0} mola</unitPattern>
+ 				<unitPattern count=""one"" case=""instrumental"">{0} molom</unitPattern>
+ 				<unitPattern count=""few"">{0} mola</unitPattern>
++				<unitPattern count=""few"" case=""accusative"">↑↑↑</unitPattern>
++				<unitPattern count=""few"" case=""genitive"">↑↑↑</unitPattern>
++				<unitPattern count=""few"" case=""instrumental"">↑↑↑</unitPattern>
+ 				<unitPattern count=""other"">{0} mola</unitPattern>
++				<unitPattern count=""other"" case=""accusative"">↑↑↑</unitPattern>
++				<unitPattern count=""other"" case=""genitive"">↑↑↑</unitPattern>
++				<unitPattern count=""other"" case=""instrumental"">↑↑↑</unitPattern>
+ 			</unit>
+ 			<unit type=""consumption-liter-per-kilometer"">
+ 				<displayName>litri po kilometru</displayName>
+@@ -9578,12 +9596,15 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+ 			</unit>
+ 			<unit type=""length-furlong"">
+ 				<displayName>furlonzi</displayName>
++				<unitPattern count=""one"">↑↑↑</unitPattern>
+ 				<unitPattern count=""few"">{0} fur</unitPattern>
++				<unitPattern count=""other"">↑↑↑</unitPattern>
+ 			</unit>
+ 			<unit type=""length-fathom"">
+ 				<displayName>hv</displayName>
+ 				<unitPattern count=""one"">{0} fth</unitPattern>
+ 				<unitPattern count=""few"">{0} fth</unitPattern>
++				<unitPattern count=""other"">↑↑↑</unitPattern>
+ 			</unit>
+ 			<unit type=""length-nautical-mile"">
+ 				<displayName>nmi</displayName>
+@@ -10170,6 +10191,18 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+ 				<unitPattern count=""few"">{0} ly</unitPattern>
+ 				<unitPattern count=""other"">{0} ly</unitPattern>
+ 			</unit>
++			<unit type=""length-furlong"">
++				<displayName>↑↑↑</displayName>
++				<unitPattern count=""one"">↑↑↑</unitPattern>
++				<unitPattern count=""few"">↑↑↑</unitPattern>
++				<unitPattern count=""other"">↑↑↑</unitPattern>
++			</unit>
++			<unit type=""length-fathom"">
++				<displayName>↑↑↑</displayName>
++				<unitPattern count=""one"">↑↑↑</unitPattern>
++				<unitPattern count=""few"">↑↑↑</unitPattern>
++				<unitPattern count=""other"">↑↑↑</unitPattern>
++			</unit>
+ 			<unit type=""mass-kilogram"">
+ 				<displayName>kg</displayName>
+ 				<unitPattern count=""one"">{0} kg</unitPattern>
+@@ -10279,6 +10312,9 @@ CLDR data files are interpreted according to the LDML specification (http://unic
+ 				<unitPattern count=""other"">{0} fl oz Imp</unitPattern>
+ 			</unit>
+ 			<unit type=""volume-dessert-spoon-imperial"">
++				<displayName>↑↑↑</displayName>
++				<unitPattern count=""one"">↑↑↑</unitPattern>
++				<unitPattern count=""few"">↑↑↑</unitPattern>
+ 				<unitPattern count=""other"">{0}dsp-Imp</unitPattern>
+ 			</unit>
+ 			<unit type=""volume-pinch"">{noformat}",,,,,,,In Progress
+Mark BRS tasks,CLDR-14984,86811,Bug,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,17/Aug/21 11:05 AM,25/Aug/21 10:44 AM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Starting with:
+A05.7	Analyze differences between en_GB and en_001 (main and annotations), determine which data needs to move up to en_001 and any necessary corrections. (note that Time and Date formats cannot be moved without TC policy review)",,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=4}, build={count=2, dataType=build, failedBuildCount=0, successfulBuildCount=2, unknownBuildCount=0}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":4,""lastUpdated"":""2021-08-24T16:25:35.000-0700"",""stateCount"":4,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":4,""name"":""GitHub""}}},""build"":{""overall"":{""count"":2,""lastUpdated"":null,""failedBuildCount"":0,""successfulBuildCount"":2,""unknownBuildCount"":0,""dataType"":""build""},""byInstanceType"":{""cloud-providers"":{""count"":2,""name"":""Other providers""}}}}},""isStale"":true}}",,,,,,,,0|i0d64v:,,,,,,,,,,,,,,,,,,,,,,,,,,,23/Aug/21 6:25 PM;5b1fa41abe73de20759a87c2;CLDR-14984 A23.52 Update the segments using unicodetools/.../Segmenter.java,"24/Aug/21 12:09 PM;5b1fa41abe73de20759a87c2;A19 Emoji tickets
+
+[https://unicode-org.atlassian.net/browse/CLDR-14228|https://unicode-org.atlassian.net/browse/CLDR-14228|smart-link] 
+
+[https://unicode-org.atlassian.net/browse/CLDR-14169|https://unicode-org.atlassian.net/browse/CLDR-14169|smart-link] 
+
+[https://unicode-org.atlassian.net/browse/CLDR-11099|https://unicode-org.atlassian.net/browse/CLDR-11099|smart-link] 
+
+[https://unicode-org.atlassian.net/browse/CLDR-14369|https://unicode-org.atlassian.net/browse/CLDR-14369|smart-link] 
+
+[https://unicode-org.atlassian.net/browse/CLDR-14659|https://unicode-org.atlassian.net/browse/CLDR-14659|smart-link] 
+
+Also, fix some of the incorrectly lowercased en.xml (like ‘o' instead of 'O’)",,,,,,In Progress
+CLDR 40 BRS tasks - Peter,CLDR-14976,86802,Task,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,15/Aug/21 11:24 AM,15/Aug/21 11:25 AM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"CLDR 40 BRS tasks: Peter; e.g. changes & tagging for ICU integration, etc.",,Peter Edberg,,,,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=5}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":5,""lastUpdated"":""2021-08-31T08:59:25.000-0700"",""stateCount"":5,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":5,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d62v:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+Generate charts,CLDR-14959,86775,Task,Accepted,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,06/Aug/21 7:42 AM,10/Aug/21 9:08 AM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Run GenerateAllCharts.java,,Thomas Bishop,,,,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0d5wv:,,,,,,,,,,,,,,,,,,,,,,,,,,,"10/Aug/21 9:08 AM;5cae14ea9c21b237caab46fc;For reference, here are the changes I made to generate the charts without stopping due to exceptions:
+
+{noformat}[2021-08-10 Tue Aug 10 • 12:06] /Users/tbishop/Documents/WenlinDocs/Organizations/Unicode/CLDR_job/cldr
+[TBRetinaMacBook ∞ tbishop] $ git diff
+diff --git a/tools/cldr-code/src/main/java/org/unicode/cldr/tool/ChartGrammaticalForms.java b/tools/cldr-code/src/main/java/org/unicode/cldr/tool/ChartGrammaticalForms.java
+index 6d9a254e6a..e5a5f81dc2 100644
+--- a/tools/cldr-code/src/main/java/org/unicode/cldr/tool/ChartGrammaticalForms.java
++++ b/tools/cldr-code/src/main/java/org/unicode/cldr/tool/ChartGrammaticalForms.java
+@@ -580,6 +580,8 @@ public class ChartGrammaticalForms extends Chart {
+                                         String withContext = caseMinimalPair == null ? sample : MessageFormat.format(caseMinimalPair, sample);
+ 
+                                         caseTablePrinter.addCell(withContext);
++                                    } else {
++                                        caseTablePrinter.addCell(""n/a"");
+                                     }
+                                 }
+                             }
+diff --git a/tools/cldr-code/src/main/java/org/unicode/cldr/tool/TablePrinter.java b/tools/cldr-code/src/main/java/org/unicode/cldr/tool/TablePrinter.java
+index a3a1cb3f8e..d495173a00 100644
+--- a/tools/cldr-code/src/main/java/org/unicode/cldr/tool/TablePrinter.java
++++ b/tools/cldr-code/src/main/java/org/unicode/cldr/tool/TablePrinter.java
+@@ -147,8 +147,10 @@ public class TablePrinter {
+ 
+     public TablePrinter addRow(Comparable<Object>[] data) {
+         if (data.length != columns.size()) {
+-            throw new IllegalArgumentException(String.format(""Data size (%d) != column count (%d)"", data.length,
++            System.out.println(String.format(""addRow: Data size (%d) != column count (%d)"", data.length,
+                 columns.size()));
++            // throw new IllegalArgumentException(String.format(""Data size (%d) != column count (%d)"", data.length,
++            //    columns.size()));
+         }
+         // make sure we can compare; get exception early
+         if (rows.size() > 0) {
+@@ -157,7 +159,8 @@ public class TablePrinter {
+                 try {
+                     data[i].compareTo(data2[i]);
+                 } catch (RuntimeException e) {
+-                    throw new IllegalArgumentException(""Can't compare column "" + i + "", "" + data[i] + "", "" + data2[i]);
++                    System.out.println(""addRow: Can't compare column ..."");
++                    // throw new IllegalArgumentException(""Can't compare column "" + i + "", "" + data[i] + "", "" + data2[i]);
+                 }
+             }
+         }
+@@ -179,11 +182,13 @@ public class TablePrinter {
+     public TablePrinter addCell(Comparable cell) {
+         if (rows.size() > 0) {
+             int i = partialRow.size();
+-            Comparable cell0 = rows.get(0)[i];
++            Comparable cell0 = null;
+             try {
++                cell0 = rows.get(0)[i];
+                 cell.compareTo(cell0);
+             } catch (RuntimeException e) {
+-                throw new IllegalArgumentException(""Can't compare column "" + i + "", "" + cell + "", "" + cell0);
++                System.out.println(""addCell: Can't compare column "" + i + "", "" + cell + "", "" + cell0);
++                // throw new IllegalArgumentException(""Can't compare column "" + i + "", "" + cell + "", "" + cell0);
+             }
+ 
+         }
+@@ -193,8 +198,10 @@ public class TablePrinter {
+ 
+     public TablePrinter finishRow() {
+         if (partialRow.size() != columns.size()) {
+-            throw new IllegalArgumentException(""Items in row ("" + partialRow.size()
+-                + "" not same as number of columns"" + columns.size());
++            System.out.println(""Warning: \""Items in row (\"" + partialRow.size()\n""
++                + ""                + \"" not same as number of columns\"" + columns.size()"");
++            // throw new IllegalArgumentException(""Items in row ("" + partialRow.size()
++            //    + "" not same as number of columns"" + columns.size());
+         }
+         addRow(partialRow);
+         partialRow = null;
+@@ -458,20 +465,25 @@ public class TablePrinter {
+      */
+     @SuppressWarnings(""rawtypes"")
+     private int findIdentical(Comparable[][] sortedFlat, int rowIndex, int colIndex) {
+-        if (!columnsFlat[colIndex].spanRows) return 1;
+-        Comparable item = sortedFlat[rowIndex][colIndex];
+-        if (rowIndex > 0 && item.equals(sortedFlat[rowIndex - 1][colIndex])) {
+-            if (!breakSpans(sortedFlat, rowIndex, colIndex)) {
+-                return 0;
++        try {
++            if (!columnsFlat[colIndex].spanRows) return 1;
++            Comparable item = sortedFlat[rowIndex][colIndex];
++            if (rowIndex > 0 && item.equals(sortedFlat[rowIndex - 1][colIndex])) {
++                if (!breakSpans(sortedFlat, rowIndex, colIndex)) {
++                    return 0;
++                }
+             }
+-        }
+-        for (int k = rowIndex + 1; k < sortedFlat.length; ++k) {
+-            if (!item.equals(sortedFlat[k][colIndex])
+-                || breakSpans(sortedFlat, k, colIndex)) {
+-                return k - rowIndex;
++            for (int k = rowIndex + 1; k < sortedFlat.length; ++k) {
++                if (!item.equals(sortedFlat[k][colIndex])
++                    || breakSpans(sortedFlat, k, colIndex)) {
++                    return k - rowIndex;
++                }
+             }
++            return sortedFlat.length - rowIndex;
++        } catch (Exception e) {
++            System.out.println(""Caught exception in findIdentical: "" + e);
++            return 1;
+         }
+-        return sortedFlat.length - rowIndex;
+     }{noformat}",,,,,,,In Progress
+SBRS S28 GenerateBirths,CLDR-14822,86574,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed by Other Ticket,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,09/Jun/21 8:44 AM,02/Aug/21 9:51 AM,08/Sep/21 3:09 PM,02/Aug/21 9:51 AM,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"http://cldr.unicode.org/development/updating-english-root
+",,Mark Davis,Steven R. Loomis,,,5b1fa41abe73de20759a87c2,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,CLDR-14810,,,{},,,,,,,dsub,0|i0d4o7:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,31/Jul/21 10:28 AM;5af4a8718a1abd1427952ed9;[~accountid:5b1fa41abe73de20759a87c2] was this already done?,02/Aug/21 9:51 AM;5af4a8718a1abd1427952ed9;Seems to have been done in [https://unicode-org.atlassian.net/browse/CLDR-13853|https://unicode-org.atlassian.net/browse/CLDR-13853|smart-link] PR#1337 ,,,,,,Done
+Startup BRS items for CLDR 40,CLDR-14711,86431,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,05/May/21 8:35 AM,11/Aug/21 4:24 PM,08/Sep/21 3:09 PM,11/Aug/21 4:24 PM,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Startup BRS items for CLDR 40,,Peter Edberg,,,,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=4}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":4,""lastUpdated"":""2021-06-15T17:40:55.000-0700"",""stateCount"":4,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":4,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d3sf:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS Fix problems in charts for v39,CLDR-14651,86351,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,07/Apr/21 4:12 PM,27/May/21 8:20 AM,08/Sep/21 3:09 PM,27/May/21 8:20 AM,40,,,,,,,,,,,,,,,,,,,,,,BRS,charts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Note that the code changes go into v40, but the generated charts are for v39.",,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2021-04-11T07:33:58.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d3an:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,,,,,07/Apr/21 4:17 PM;5b1fa41abe73de20759a87c2;The pull request is in [https://github.com/unicode-org/cldr-staging/pull/39|https://github.com/unicode-org/cldr-staging/pull/39|smart-link] ,"24/May/21 9:26 PM;5b1fa41abe73de20759a87c2;Changing to Steven, who did the PR review.",,,,,,Done
+CLDR v39 BRS tasks - Peter,CLDR-14461,86068,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,31/Jan/21 11:03 PM,01/Sep/21 8:52 AM,08/Sep/21 3:09 PM,21/Apr/21 2:55 PM,39,40,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,BRS,,CLDR v39 BRS tasks,,Annemarie Apple 🍎,Nhi Trương,Peter Edberg,Rick McGowan,5e176cf93ebba10e937fd91d,5fcdac281051d100755eae15,5b29558fe478c9080efacbde,5b2957469ba6d02662e2f7b4,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=8}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":8,""lastUpdated"":""2021-03-31T08:38:33.000-0700"",""stateCount"":8,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":8,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d1jr:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+v39 SBRS tasks,CLDR-14297,85819,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,11/Nov/20 8:34 AM,01/Mar/21 9:31 AM,08/Sep/21 3:09 PM,01/Mar/21 9:31 AM,39,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Ticket for CLDR v39 SBRS tasks,,Annemarie Apple 🍎,Peter Edberg,,,5e176cf93ebba10e937fd91d,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2021-01-13T10:21:51.000-0800"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0d00f:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,dsub,,,,,,,,,,,,,,,,,,,Done
+"Create final TR35 for CLDR 38, revision 61",CLDR-14259,85745,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Rick McGowan,5b2957469ba6d02662e2f7b4,Rick McGowan,5b2957469ba6d02662e2f7b4,Rick McGowan,5b2957469ba6d02662e2f7b4,26/Oct/20 10:30 AM,26/Oct/20 1:34 PM,08/Sep/21 3:09 PM,26/Oct/20 1:34 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"BRS task for V38: rick
+",,Rick McGowan,,,,5b2957469ba6d02662e2f7b4,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-10-26T13:33:40.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0czjz:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS Misc. fixes to LDML spec,CLDR-14194,85625,User Guide,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,22/Sep/20 4:46 PM,18/Oct/20 2:20 PM,08/Sep/21 3:09 PM,18/Oct/20 2:20 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,docs-spec,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,spec,,"This is for various fixes that aren't included in other LDML spec tickets. A major  goal is to cover all the new DTD structure in [https://unicode-org.github.io/cldr-staging/charts/38/supplemental/dtd_deltas.html|https://unicode-org.github.io/cldr-staging/charts/38/supplemental/dtd_deltas.html], and fix other problems noticed while doing that.
+
+People can add comments to this issue as they find problems. Please include link to the section where the problem is. Current modifications are in:
+
+[https://unicode-org.github.io/cldr/ldml/tr35.html#Modifications|https://unicode-org.github.io/cldr/ldml/tr35.html#Modifications]",,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2020-10-12T08:52:22.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cytb:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,,,,,"23/Sep/20 6:22 PM;5b1fa41abe73de20759a87c2;The default unitPreference skeleton needs to be specified more precisely, and we need to have a pointer to the spec for the format of the skeleton.
+
+[https://unicode-org.github.io/cldr/ldml/tr35-info.html#Unit_Preferences|https://unicode-org.github.io/cldr/ldml/tr35-info.html#Unit_Preferences]","09/Oct/20 8:30 AM;5b1fa41abe73de20759a87c2;More work needs to be done in additional PRs, but people can add comments in this ticket.
+
+For units, the current changes are in yellow in the following.
+
+* [https://unicode-org.github.io/cldr/ldml/tr35-general.html#Unit_Elements|https://unicode-org.github.io/cldr/ldml/tr35-general.html#Unit_Elements]
+* [https://unicode-org.github.io/cldr/ldml/tr35-general.html#Grammatical_Features|https://unicode-org.github.io/cldr/ldml/tr35-general.html#Grammatical_Features]
+* [https://unicode-org.github.io/cldr/ldml/tr35-general.html#Grammatical_Derivations|https://unicode-org.github.io/cldr/ldml/tr35-general.html#Grammatical_Derivations]
+* [https://unicode-org.github.io/cldr/ldml/tr35-info.html#Unit_Preferences|https://unicode-org.github.io/cldr/ldml/tr35-info.html#Unit_Preferences] (small change)
+* [https://unicode-org.github.io/cldr/ldml/tr35-numbers.html#Minimal_Pairs|https://unicode-org.github.io/cldr/ldml/tr35-numbers.html#Minimal_Pairs]
+
+
+TODO
+
+* [https://unicode-org.atlassian.net/browse/CLDR-13787|https://unicode-org.atlassian.net/browse/CLDR-13787|smart-link]  Improve specs around inverse unit handling
+* Clean up the discussion of constructing a compound name. Describe the whole process, and modify the tree structure in [https://unicode-org.github.io/cldr/ldml/tr35-general.html#Grammatical_Derivations|https://unicode-org.github.io/cldr/ldml/tr35-general.html#Grammatical_Derivations] since there is a simpler formulation",,,,,,Done
+BRS tasks for v38: Mark,CLDR-14167,85581,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,08/Sep/20 5:35 PM,28/Oct/20 8:44 AM,08/Sep/21 3:09 PM,28/Oct/20 8:36 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"BRS tasks, such as A25.8",,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-10-15T17:10:13.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cyjj:,,,Thomas Bishop,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS A22.5 Generate derived annotations,CLDR-14142,85531,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,27/Aug/20 10:37 PM,06/Oct/20 7:34 AM,08/Sep/21 3:09 PM,06/Oct/20 7:34 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,BRS A22.5 Generate derived annotations,,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-08-28T00:20:19.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cy8f:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS A11.3 Add emoji data,CLDR-14141,85530,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,27/Aug/20 9:54 PM,26/Oct/20 1:43 PM,08/Sep/21 3:09 PM,26/Oct/20 1:43 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"add emoji collation data, etc as per BRS",,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-08-28T00:21:00.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cy87:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS 38 A24.4 CLDRModify,CLDR-14138,85527,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,27/Aug/20 1:57 PM,05/Oct/20 10:53 AM,08/Sep/21 3:09 PM,05/Oct/20 10:53 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,BRS,,,,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-09-03T10:10:44.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cy7j:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS tasks for v38: Peter,CLDR-14128,85517,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,26/Aug/20 4:54 PM,06/Apr/21 8:47 PM,08/Sep/21 3:09 PM,06/Apr/21 8:47 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Peter's BRS tasks for v38,,Kristi Lee,Mark Davis,Peter Edberg,,5ca62348fa160e67c4025b49,5b1fa41abe73de20759a87c2,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=13}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":13,""lastUpdated"":""2020-10-22T16:30:44.000-0700"",""stateCount"":13,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":13,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cy5b:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,2020-10-30 22:29:57.193,rc,,,,,,,,,,,,28/Oct/20 8:03 AM;5b29558fe478c9080efacbde;Mark approved most of the PRs for this so giving to Mark for review (even though he also authored one of the PRs),30/Oct/20 3:29 PM;5b1fa41abe73de20759a87c2;Wasn’t able to get through these this week but should do next week.,"23/Mar/21 11:14 AM;5ca62348fa160e67c4025b49;@Mark, please close this",,,,,Done
+BRS A05.7 fix en_001.xml,CLDR-14071,85433,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,10/Aug/20 2:02 PM,12/Oct/20 9:55 AM,08/Sep/21 3:09 PM,12/Oct/20 9:54 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,as per description,,Insp Changgan,Kristi Lee,Mark Davis,,5f3213778d89e3004616b174,5ca62348fa160e67c4025b49,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-08-11T08:33:43.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxmn:,,,Kristi Lee,5ca62348fa160e67c4025b49,,,,,,,,,,2020-08-11 04:00:20.051,,,,,,,,,,,,,10/Aug/20 9:00 PM;5f3213778d89e3004616b174;Thank you,"15/Aug/20 2:31 PM;5b1fa41abe73de20759a87c2;Kristi, you had an interest in this and Meike/Annemarie worked with me on it. If you don’t want to review it, maybe Fredrik or Kherishma?",12/Oct/20 9:55 AM;5ca62348fa160e67c4025b49;Note that there was a follow up to remove some of the date/time changes out of en_001.,,,,,Done
+BRS A04.8 Update charts,CLDR-14066,85428,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,09/Aug/20 1:29 AM,29/Oct/20 9:03 AM,08/Sep/21 3:09 PM,29/Oct/20 9:03 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,charts,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Update charts,,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,;09/Aug/20 5:48 PM;kasmikamrunnahar;28800,,0,28800,,,0,28800,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2020-10-15T19:08:21.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxlj:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,,,,,"12/Oct/20 1:38 PM;5b1fa41abe73de20759a87c2;* Added support for units chart
+* Fixed display of constraints in the DTD Delta charts
+* Fix LocaleCoverage to use actual ICU locales",,,,,,,Done
+BRS A04.4 — Resolve remaining errors in XML imported data,CLDR-14060,85418,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,05/Aug/20 10:30 AM,23/Oct/20 9:42 AM,08/Sep/21 3:09 PM,23/Oct/20 9:42 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,Kherishma Shah,Mark Davis,,,5ecea98db1df560c072c4268,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-08-11T10:48:11.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxjb:,,,Kristi Lee,5ca62348fa160e67c4025b49,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+cldr-unittest/build.xml to use -z final_testing instead of -z build,CLDR-14059,85414,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,05/Aug/20 9:08 AM,05/Oct/20 8:16 PM,08/Sep/21 3:09 PM,05/Oct/20 8:16 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Infrastructure,maintenance,"SBRS task, preparing for phase SUBMIT",,Thomas Bishop,,,,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,,CLDR-13849,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-08-11T13:46:29.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxif:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,"21/Sep/20 8:24 AM;5cae14ea9c21b237caab46fc;The two tickets were for switching in two directions: from build to final_testing, and vice versa. They aren’t really clones.",,,,,,,Done
+cldr-unittest/build.xml to use -z build instead of -z final_testing,CLDR-13849,85139,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,03/Jun/20 9:00 AM,05/Oct/20 8:20 PM,08/Sep/21 3:09 PM,05/Oct/20 8:20 PM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Infrastructure,maintenance,"SBRS task, preparing for phase SUBMIT",,Thomas Bishop,,,,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-06-05T07:41:43.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cvtb:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,"21/Sep/20 8:23 AM;5cae14ea9c21b237caab46fc;This isn’t really a clone of [https://unicode-org.atlassian.net/browse/CLDR-14059|https://unicode-org.atlassian.net/browse/CLDR-14059|smart-link] 
+
+The two tickets were for switching in two directions: from build to final_testing, and vice versa.",,,,,,,Done
+BRS Spec Tasks for Mark,CLDR-13658,84824,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,16/Mar/20 4:12 PM,23/Oct/20 2:15 PM,08/Sep/21 3:09 PM,12/May/20 10:36 PM,37,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,CLDR-13587,,CLDR-13591,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2020-04-13T11:27:12.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ctvb:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,rc,,,,,,,,,,,,16/Mar/20 4:12 PM;5b1fa41abe73de20759a87c2;Cloned general BRS ticket for clarity.,09/Apr/20 6:51 PM;5b1fa41abe73de20759a87c2;Add (A) Negative powers from [https://docs.google.com/document/d/1QqpORRdtbv33q84FrZKHcBxDDZYLHgoBFglROupUkYo/edit#heading=h.a4raezr5em6j|https://docs.google.com/document/d/1QqpORRdtbv33q84FrZKHcBxDDZYLHgoBFglROupUkYo/edit#heading=h.a4raezr5em6j|smart-link] ,"10/Apr/20 3:49 PM;5b1fa41abe73de20759a87c2;Fix In \[Unit Identifier Normalization]([https://unicode-org.github.io/cldr/ldml/tr35-info.html#Unit_Identifier_Normalization)|https://unicode-org.github.io/cldr/ldml/tr35-info.html#Unit_Identifier_Normalization] the example:
+```
+meter-square-gram ⇒ gram-meter
+```
+should probably be:
+```
+meter-square-gram ⇒ square-gram-meter
+```
+
+from: [https://unicode-org.atlassian.net/browse/CLDR-13689|https://unicode-org.atlassian.net/browse/CLDR-13689|smart-link] ","10/Apr/20 3:54 PM;5b1fa41abe73de20759a87c2;From [https://unicode-org.atlassian.net/browse/CLDR-13674|https://unicode-org.atlassian.net/browse/CLDR-13674|smart-link] 
+
+# Check all the Review Notes and TBD's and fix/remove.
+# Fix the descriptions of grammatical categories
+## [https://twitter.com/eggleroy/status/1243585661367713800|https://twitter.com/eggleroy/status/1243585661367713800]
+## fix missing cells.
+# For the broken link: [https://www.usno.navy.mil/USNO/time/master-clock/systems-of-time|https://www.usno.navy.mil/USNO/time/master-clock/systems-of-time]
+
+","10/Apr/20 3:57 PM;5b1fa41abe73de20759a87c2;Also make css and logo independent of web, so that the proposed.html works right.",,,Done
+BRS Chart Tasks for Mark (cloned),CLDR-13657,84823,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,16/Mar/20 3:09 PM,23/Oct/20 2:55 PM,08/Sep/21 3:09 PM,12/May/20 10:38 PM,37,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,CLDR-13587,,CLDR-13591,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-03-26T12:32:55.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ctv3:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,rc,,,,,,,,,,,,16/Mar/20 3:10 PM;5b1fa41abe73de20759a87c2;Separating out chart issues.,,,,,,,Done
+BRS Tasks for Mark,CLDR-13587,84708,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,14/Feb/20 10:20 AM,23/Oct/20 2:58 PM,08/Sep/21 3:09 PM,12/May/20 8:27 AM,37,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,Chris Burnett,Mark Davis,,,5db6898fb3c7570c49db153e,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,CLDR-13591,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=10}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":10,""lastUpdated"":""2020-03-18T17:54:21.000-0700"",""stateCount"":10,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":10,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ct5j:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,,rc,,,,,,,,,,,,,,,,,,,Done
+v36 BRS tasks,CLDR-13243,84181,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,John Emmons,5b353e5c1434ca6683d9b0ad,20/Aug/19 10:00 AM,09/Oct/19 12:55 PM,08/Sep/21 3:09 PM,04/Oct/19 11:10 AM,36,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Error resolution and various BRS items,,John Emmons,,,,5b353e5c1434ca6683d9b0ad,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=19}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":19,""lastUpdated"":""2019-10-04T15:46:50.000-0700"",""stateCount"":19,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":19,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cpwf:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+BRS Resolution tasks,CLDR-13235,84171,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,16/Aug/19 11:28 AM,03/Oct/19 9:17 AM,08/Sep/21 3:09 PM,03/Oct/19 9:17 AM,36,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Integrate data in from Survey tool,,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=7}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":7,""lastUpdated"":""2019-10-03T14:59:58.000-0700"",""stateCount"":7,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":7,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cpu7:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,rc,,,,,,,,,,,,"08/Sep/19 8:41 AM;5b1fa41abe73de20759a87c2;For the charts, might add a count to the chits on [https://www.unicode.org/cldr/charts/36/delta/index.html|https://www.unicode.org/cldr/charts/36/delta/index.html]",,,,,,,Done
+"SBRS tasks: GenerateBirths, etc.",CLDR-13059,83843,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,24/May/19 7:56 AM,04/Dec/20 10:40 AM,08/Sep/21 3:09 PM,21/Aug/19 3:24 AM,36,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,Mark Davis,Peter Edberg,Steven R. Loomis,,5b1fa41abe73de20759a87c2,5b29558fe478c9080efacbde,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2019-06-10T11:04:19.000-0700"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0cntb:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,2019-06-03 18:38:22.98,dsub,,,,,,,,,,,,03/Jun/19 11:38 AM;5af4a8718a1abd1427952ed9;Please put some description here.,"10/Jun/19 3:50 AM;5b1fa41abe73de20759a87c2;This is for various SBRS tasks, as documented in the spreadsheet. Each PR will describe the step.","10/Jun/19 5:01 AM;5b1fa41abe73de20759a87c2;h6. CLDR-13059 Move 3 special subdivisions into main
+
+",09/Oct/19 8:21 PM;5b29558fe478c9080efacbde;Set reviewer = PR reviewer for most changes,,,,Done
+CLDR 35 final BRS tasks,CLDR-11944,70388,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:18 PM,09/May/19 12:41 PM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Ticket for CLDR 35 BRS tasks from beta through final release,,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=7, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":7,""lastUpdated"":""2019-03-27T10:52:18.000-0700"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":7,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0acrj:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,2019-05-09 19:35:09.773,final,,,15/Mar/19 9:36 AM,pedberg,,pedberg,fixed,,closed,,,"09/May/19 12:35 PM;5b34954eddd2363f63053eec;h6. Trac Comment 1 by [~accountid:5b29558fe478c9080efacbde]—2019-03-27T18:15:46.790Z
+OK, finished with this work, ready for review.",,,,,,,Done
+BRS: restore defaultNumberingSystem for certain locales,CLDR-11933,70377,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:18 PM,09/May/19 12:35 PM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Because of the vxml issues, the defaultNumberingSystem=arab was omitted from certain files.",,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=1, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":1,""lastUpdated"":""2019-03-12T10:31:00.000-0700"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0acp3:,,,Markus Scherer,5abac250c8a6c4195fbeec16,,,,,,,,,,2019-05-09 19:35:47.89,spec-beta,,,12/Mar/19 9:45 AM,mark,,mark,fixed,,closed,,,"09/May/19 12:35 PM;5b34954eddd2363f63053eec;h6. Trac Comment 1 by [~accountid:5b1fa41abe73de20759a87c2]—2019-03-12T18:11:41.478Z
+Note: the total list was the following. However, some of the locales had retained the 'arab' value, and were unaffected.
+{noformat}
+locale=ar_AE ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_BH ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_DJ ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_EG ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_ER ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_IL ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_IQ ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_JO ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_KM ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_KW ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_LB ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_MR ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_OM ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_PS ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_QA ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_SA ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_SD ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_SO ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_SS ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_SY ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_TD ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+locale=ar_YE ; action=add ; new_path=//ldml/numbers/defaultNumberingSystem ; new_value=arab
+{noformat}","09/May/19 12:35 PM;5b34954eddd2363f63053eec;h6. Trac Comment 2 by [~accountid:5abac250c8a6c4195fbeec16]—2019-03-12T18:32:30.205Z
+r14936 lgtm
+
+Original ticket for this issue: [CLDR-11930]",,,,,,Done
+CLDR 35 BRS tasks & error fixes - Peter,CLDR-11845,70289,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-release,,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:17 PM,09/May/19 12:41 PM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,My BRS tasks and error resolution fixes,,User ,,,,unknown,,,,,,,,,,,,,,,,CLDR-11944,,,"{repository={count=24, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":24,""lastUpdated"":""2019-03-12T23:05:01.000-0700"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":24,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ac5j:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,2019-05-09 19:41:40.797,rc,,,08/Feb/19 12:38 AM,pedberg,,pedberg,fixed,,closed,,,"09/May/19 12:41 PM;5b34954eddd2363f63053eec;h6. Trac Comment 4 by [~accountid:5b29558fe478c9080efacbde]—2019-03-18T02:17:00.697Z
+This is my BRS work up to beta; work from beta onward is in [CLDR-11944]:",,,,,,,Done
+BRS v40: Check in xml data,CLDR-14952,86767,Task,Reviewing,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,Steven R. Loomis,5af4a8718a1abd1427952ed9,04/Aug/21 12:56 PM,25/Aug/21 8:07 AM,08/Sep/21 3:09 PM,,40,,,,,,,,,,,,,,,,,,,,,,BRS,data-general,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,BRS,,"What it says on the tin. 
+- move ST to READONLY with a thankyou
+- fetch latest data
+- generate vxml on top of the production tag, and create a PR for the same
+- Additionally, fetch latest master
+- regenerate vxml and see if there is any difference",,Steven R. Loomis,,,,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=6}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":6,""lastUpdated"":""2021-08-10T15:10:14.000-0700"",""stateCount"":6,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":6,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d5v3:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,In Progress
+"Merge maint/maint-39 branch back to main branch (""master"")",CLDR-14696,86411,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,27/Apr/21 11:10 PM,12/May/21 9:51 PM,08/Sep/21 3:09 PM,12/May/21 9:51 PM,40,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Merge maint/maint-39 branch back to main branch (""master""). See:
+http://site.icu-project.org/repository/gitdev#TOC-Merging-from-Maint-to-Main-BRS-Task-",,Peter Edberg,,,,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2021-04-29T10:15:23.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d3nz:,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+v38.1 BRS,CLDR-14354,85919,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,08/Dec/20 10:42 PM,12/Jan/21 1:11 PM,08/Sep/21 3:09 PM,12/Jan/21 1:11 PM,38.1,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"v38.1 BRS tasks
+
+maint/maint-38 will be cloned to maint/maint-38-1
+
+then commit v38.1 fixes to master, Peter will cherry-pick to maint/maint-38-1",,Peter Edberg,,,,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-12-10T09:38:33.000-0800"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0d0mn:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+v38 new locales to common and to ICU,CLDR-14080,85443,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Mark Davis,5b1fa41abe73de20759a87c2,Kristi Lee,5ca62348fa160e67c4025b49,Kristi Lee,5ca62348fa160e67c4025b49,12/Aug/20 8:47 AM,12/Oct/20 9:52 AM,08/Sep/21 3:09 PM,12/Oct/20 9:52 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,icu-data,ReleaseNote,"The two locales that are recommended to move to main are:
+* Sanskrit (sa) Met criteria with Basic at 99.5% and Core 75%
+* Dogri (doi) Met criteria with Basic at 99.7% and Core 87.5%
+",,Daniel Ju,Kherishma Shah,Kristi Lee,Mark Davis,5b5662c2e41fea2ca1cd1353,5ecea98db1df560c072c4268,5ca62348fa160e67c4025b49,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-08-21T15:11:02.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxov:,,,Kristi Lee,5ca62348fa160e67c4025b49,,,,,,,,,,2020-08-12 21:37:14.558,,,,,,,,,,,,,"12/Aug/20 2:37 PM;5ecea98db1df560c072c4268;[~accountid:5b1fa41abe73de20759a87c2] Since Peter is out, reassigning to Mark","15/Aug/20 2:18 PM;5b1fa41abe73de20759a87c2;Expanded Recommendations
+
+On the CLDR side:
+
+# We already have Sanskrit and Dogri on our list to move to common, as above.
+# Move Caddo and Guarani out of the CLDR target locales.
+## They are already in seed, and were added as CLDR target locales when we thought we were going to do them.
+# Move Church Slavic, Prussian, Volapük from common to seed.
+## Some marked as common have very low Basic _and_ are not in ICU.
+## Document in the Migration section
+
+On the ICU side:
+
+# Add common CLDR that are missing in ICU (after above cases): Nigerian Pidgin, Sundanese, Sanskrit, Dogri, Manipuri, Maithili, Santali, Sindhi (Devanagari), Fulah (Adlam) go into ICU.
+# Remove very low-stat, non common locales: Low German
+
+----
+
+This is *_just_* for this release, and continuing past principles. We have two conjoined goals longer term:
+
+# Move the seed locales into the common directory.
+# Replace the ""seed"" vs ""common"" distinction by new coverage levels. That is, we would reorganize our coverage levels so that there is a category for ""ready for ICU"", where 100% qualifies and anything less doesn't. That would make the ""decide what goes into ICU"" pretty much turn-key. We may decide to retrofit Basic to fill this need, or may put something below Basic.
+
+----
+
+See also [https://unicode-org.github.io/cldr-staging/charts/38/supplemental/locale_coverage.html|https://unicode-org.github.io/cldr-staging/charts/38/supplemental/locale_coverage.html]","12/Oct/20 9:52 AM;5ca62348fa160e67c4025b49;In Common/main: sa.xml, doi.xml
+
+In Seed/main: cu.xml, prg.xml, vo.xml (Already in Seed cad.xml, gn.xml",,,,,Done
+Generate VXML for version 38,CLDR-14061,85419,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,Thomas Bishop,5cae14ea9c21b237caab46fc,05/Aug/20 12:21 PM,05/Oct/20 9:34 AM,08/Sep/21 3:09 PM,05/Oct/20 9:34 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,Infrastructure,,"Generate VXML for version 38, per TC meeting, having switched ST to CLDR_PHASE=READONLY.",,Thomas Bishop,,,,5cae14ea9c21b237caab46fc,,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=2}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":2,""lastUpdated"":""2020-08-10T12:44:18.000-0700"",""stateCount"":2,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":2,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0cxjj:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+CLDR v38 SBRS,CLDR-13781,85046,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,13/May/20 9:56 AM,04/Dec/20 10:41 AM,08/Sep/21 3:09 PM,16/Oct/20 10:34 AM,38,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,CLDR v38 SBRS items,,Fredrik Stenshamn,Peter Edberg,,,5c9b9851b16b72370c20b5f3,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,CLDR-13782,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2020-05-19T10:08:58.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0cv8n:,,,Kristi Lee,5c9b984c03b8be71089b4f3d,,,,,,,,,,2020-08-07 18:15:15.661,dsub,,,,,,,,,,,,07/Aug/20 11:15 AM;5c9b9851b16b72370c20b5f3;The related PR is already merged. Can this be closed?,,,,,,,Done
+v37 BRS tasks,CLDR-13591,84715,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,16/Feb/20 9:05 AM,14/Oct/20 9:39 AM,08/Sep/21 3:09 PM,13/May/20 4:49 PM,37,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"CLDR v37 BRS tasks: Updating readme, ICU4J libraries, etc.",,John Emmons,Mark Davis,Peter Edberg,Steven R. Loomis,5b353e5c1434ca6683d9b0ad,5b1fa41abe73de20759a87c2,5b29558fe478c9080efacbde,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,CLDR-13626,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=15}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":15,""lastUpdated"":""2020-06-15T17:49:58.000-0700"",""stateCount"":15,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":15,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ct73:,,,Mark Davis,5b1fa41abe73de20759a87c2,,,,,,,,,,,final,,,,,,,,,,,,,,,,,,,Done
+CLDR v36.1 BRS,CLDR-13431,84482,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,20/Nov/19 2:51 PM,11/Mar/20 9:35 AM,08/Sep/21 3:09 PM,11/Mar/20 9:35 AM,36.1,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"CLDR v36.1 tasks, most or all to be done on maint-36 branch, e.g.
+
+* Version update in CLDRFile & dtds
+* Readme updates
+
+",,John Emmons,Peter Edberg,,,5b353e5c1434ca6683d9b0ad,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=3}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":3,""lastUpdated"":""2020-03-05T09:13:15.000-0800"",""stateCount"":3,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":3,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0crrb:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Done
+SBRS 37,CLDR-13415,84463,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,John Emmons,5b353e5c1434ca6683d9b0ad,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,13/Nov/19 8:43 AM,04/Dec/20 10:40 AM,08/Sep/21 3:09 PM,09/Dec/19 8:26 AM,37,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,SBRS items for CLDR 37,,bader h4,Peter Edberg,,,5dcb83bc3b674b0db98fc1eb,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=7}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":7,""lastUpdated"":""2019-12-05T10:16:22.000-0800"",""stateCount"":7,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":7,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0crn3:,,,Peter Edberg,5b29558fe478c9080efacbde,,,,,,,,,,,dsub,,,,,,,,,,,,,,,,,,,Done
+CLDR 36 SBRS items,CLDR-13045,83823,Task,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,Fixed,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,20/May/19 10:10 PM,04/Dec/20 10:40 AM,08/Sep/21 3:09 PM,25/Jun/19 11:41 PM,36,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,30/May/19 12:00 AM,0,,,"Tasks for the CLDR 36 startup BRS: Update the version in CLDRFile in dtds, update the readme, update the ICU and other libs, etc. This will involve multiple PRs by different people.",,John Emmons,Mark Davis,Peter Edberg,,5b353e5c1434ca6683d9b0ad,5b1fa41abe73de20759a87c2,5b29558fe478c9080efacbde,,,,,,,,,,,,,,,,,"{pullrequest={dataType=pullrequest, state=MERGED, stateCount=1}, json={""cachedValue"":{""errors"":[],""summary"":{""pullrequest"":{""overall"":{""count"":1,""lastUpdated"":""2019-05-24T12:07:35.000-0700"",""stateCount"":1,""state"":""MERGED"",""dataType"":""pullrequest"",""open"":false},""byInstanceType"":{""GitHub"":{""count"":1,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0cnov:,,,Steven R. Loomis,5af4a8718a1abd1427952ed9,,,,,,,,,,,dsub,,,,,,,,,,,,25/Jun/19 11:41 PM;5b29558fe478c9080efacbde;Actually the other SBRS items were handled under different tickets. so this just has the one PR which was approved and merged a while ago.,09/Oct/19 8:22 PM;5b29558fe478c9080efacbde;Set reviewer = PR reviewer,,,,,,Done
+CLDR 35.1 BRS tasks,CLDR-11971,70415,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,,Peter Edberg,5b29558fe478c9080efacbde,Peter Edberg,5b29558fe478c9080efacbde,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:18 PM,09/May/19 12:30 PM,08/Sep/21 3:09 PM,,35.1,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"CLDR 35.1 BRS tasks. including merging desired fixes from trunk into maint-35 branch, updating version and readme, and tagging releases from the maint-35 branch.",,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=12, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":12,""lastUpdated"":""2019-04-17T12:07:52.000-0700"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":12,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0acxj:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,,final,,,27/Mar/19 1:21 PM,pedberg,,pedberg,fixed,,closed,,,,,,,,,,Done
+BRS CldrModify passes,CLDR-11842,70286,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:17 PM,04/Dec/20 10:40 AM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,,,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=20, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":20,""lastUpdated"":""2019-02-18T23:03:38.000-0800"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":20,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0ac4v:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,,dsub,,,07/Feb/19 3:31 AM,mark,,mark,fixed,,closed,,,,,,,,,,Done
+Other errors when importing to XML,CLDR-11830,70274,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:17 PM,04/Dec/20 10:40 AM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"{noformat}
+ccp [Chakma]	error	▸Currencies|Central_Asia_(C)|Central_Asia:_Turkmenistan:_TMM_(old)|TMM-name-other◂	〈Turkmenistani manat (1993–2009)〉	【】	〈𑄖𑄪𑄢𑄴𑄇𑄧𑄟𑄬𑄚𑄨𑄌𑄴𑄖𑄚𑄨 𑄟𑄚𑄖𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Asia: Turkmenistan: TMT-name|Central]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""TMM""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""TMM""]/displayName
+ccp [Chakma]	error	▸Currencies|Central_Asia_(C)|Central_Asia:_Turkmenistan:_TMM_(old)|TMM-name◂	〈Turkmenistani Manat (1993–2009)〉	【】	〈𑄖𑄪𑄢𑄴𑄇𑄧𑄟𑄬𑄚𑄨𑄌𑄴𑄖𑄚𑄨 𑄟𑄚𑄖𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Asia: Turkmenistan: TMT-name|Central]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""TMM""]/displayName
+ccp [Chakma]	error	▸Currencies|Central_Asia_(C)|Central_Asia:_Turkmenistan|TMT-name-one◂	〈Turkmenistani manat〉	【】	〈𑄖𑄪𑄢𑄴𑄇𑄧𑄟𑄬𑄚𑄨𑄌𑄴𑄖𑄚𑄨 𑄟𑄚𑄖𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Asia: Turkmenistan: TMM (old): TMM-name|Central]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""TMT""]/displayName[@count=""one""]
+ccp [Chakma]	error	▸Currencies|Central_Asia_(C)|Central_Asia:_Turkmenistan|TMT-name-other◂	〈Turkmenistani manat〉	【】	〈𑄖𑄪𑄢𑄴𑄇𑄧𑄟𑄬𑄚𑄨𑄌𑄴𑄖𑄚𑄨 𑄟𑄚𑄖𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Asia: Turkmenistan: TMM (old): TMM-name|Central]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""TMT""]/displayName[@count=""other""]
+ccp [Chakma]	error	▸Currencies|Central_Asia_(C)|Central_Asia:_Turkmenistan|TMT-name◂	〈Turkmenistani Manat〉	【】	〈𑄖𑄪𑄢𑄴𑄇𑄧𑄟𑄬𑄚𑄨𑄌𑄴𑄖𑄚𑄨 𑄟𑄚𑄖𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Asia: Turkmenistan: TMM (old): TMM-name|Central]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""TMT""]/displayName
+ccp [Chakma]	error	▸Currencies|Middle_Africa|Middle_Africa:_Congo_-_Kinshasa:_ZRN_(old)|ZRN-name-other◂	〈Zairean new zaires (1993–1998)〉	【】	〈𑄎𑄭𑄢𑄨𑄠𑄚𑄴 𑄚𑄨𑄅𑄪 𑄎𑄭𑄢𑄬〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: Congo - Kinshasa: ZRZ (old): ZRZ-name|Middle]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZRN""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""ZRN""]/displayName
+ccp [Chakma]	error	▸Currencies|Middle_Africa|Middle_Africa:_Congo_-_Kinshasa:_ZRN_(old)|ZRN-name◂	〈Zairean New Zaire (1993–1998)〉	【】	〈𑄎𑄭𑄢𑄨𑄠𑄚𑄴 𑄚𑄨𑄅𑄪 𑄎𑄭𑄢𑄬〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: Congo - Kinshasa: ZRZ (old): ZRZ-name|Middle]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZRN""]/displayName
+ccp [Chakma]	error	▸Currencies|Middle_Africa|Middle_Africa:_Congo_-_Kinshasa:_ZRZ_(old)|ZRZ-name-other◂	〈Zairean zaires (1971–1993)〉	【】	〈𑄎𑄭𑄢𑄨𑄠𑄚𑄴 𑄚𑄨𑄅𑄪 𑄎𑄭𑄢𑄬〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: Congo - Kinshasa: ZRN (old): ZRN-name|Middle]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZRZ""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""ZRZ""]/displayName
+ccp [Chakma]	error	▸Currencies|Middle_Africa|Middle_Africa:_Congo_-_Kinshasa:_ZRZ_(old)|ZRZ-name◂	〈Zairean Zaire (1971–1993)〉	【】	〈𑄎𑄭𑄢𑄨𑄠𑄚𑄴 𑄚𑄨𑄅𑄪 𑄎𑄭𑄢𑄬〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: Congo - Kinshasa: ZRN (old): ZRN-name|Middle]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZRZ""]/displayName
+ccp [Chakma]	error	▸Currencies|Northern/Western_Europe|Western_Europe:_Switzerland:_CHE_(fund)|CHE-name-other◂	〈WIR euros〉	【】	〈𑄥𑄭𑄪𑄎𑄢𑄴𑄣𑄳𑄠𑄚𑄴𑄓𑄴 𑄃𑄨𑄃𑄪𑄢𑄮〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Europe: Switzerland: CHW (fund): CHW-name|Western]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""CHE""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""CHE""]/displayName
+ccp [Chakma]	error	▸Currencies|Northern/Western_Europe|Western_Europe:_Switzerland:_CHE_(fund)|CHE-name◂	〈WIR Euro〉	【】	〈𑄥𑄭𑄪𑄎𑄢𑄴𑄣𑄳𑄠𑄚𑄴𑄓𑄴 𑄃𑄨𑄃𑄪𑄢𑄮〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Europe: Switzerland: CHW (fund): CHW-name|Western]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""CHE""]/displayName
+ccp [Chakma]	error	▸Currencies|Northern/Western_Europe|Western_Europe:_Switzerland:_CHW_(fund)|CHW-name-other◂	〈WIR francs〉	【】	〈𑄥𑄭𑄪𑄎𑄢𑄴𑄣𑄳𑄠𑄚𑄴𑄓𑄴 𑄃𑄨𑄃𑄪𑄢𑄮〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Europe: Switzerland: CHE (fund): CHE-name|Western]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""CHW""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""CHW""]/displayName
+ccp [Chakma]	error	▸Currencies|Northern/Western_Europe|Western_Europe:_Switzerland:_CHW_(fund)|CHW-name◂	〈WIR Franc〉	【】	〈𑄥𑄭𑄪𑄎𑄢𑄴𑄣𑄳𑄠𑄚𑄴𑄓𑄴 𑄃𑄨𑄃𑄪𑄢𑄮〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Europe: Switzerland: CHE (fund): CHE-name|Western]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""CHW""]/displayName
+ccp [Chakma]	error	▸Currencies|Southern_Africa|Southern_Africa:_South_Africa:_ZAL_(fund)|ZAL-name-other◂	〈South African rands (financial)〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇𑄚𑄴 𑄢𑄳𑄠𑄚𑄳𑄓𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: South Africa: ZAR-name|Southern]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZAL""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""ZAL""]/displayName
+ccp [Chakma]	error	▸Currencies|Southern_Africa|Southern_Africa:_South_Africa:_ZAL_(fund)|ZAL-name◂	〈South African Rand (financial)〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇𑄚𑄴 𑄢𑄳𑄠𑄚𑄳𑄓𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: South Africa: ZAR-name|Southern]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZAL""]/displayName
+ccp [Chakma]	error	▸Currencies|Southern_Africa|Southern_Africa:_South_Africa|ZAR-name-one◂	〈South African rand〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇𑄚𑄴 𑄢𑄳𑄠𑄚𑄳𑄓𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: South Africa: ZAL (fund): ZAL-name|Southern]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZAR""]/displayName[@count=""one""]
+ccp [Chakma]	error	▸Currencies|Southern_Africa|Southern_Africa:_South_Africa|ZAR-name-other◂	〈South African rand〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇𑄚𑄴 𑄢𑄳𑄠𑄚𑄳𑄓𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: South Africa: ZAL (fund): ZAL-name|Southern]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZAR""]/displayName[@count=""other""]
+ccp [Chakma]	error	▸Currencies|Southern_Africa|Southern_Africa:_South_Africa|ZAR-name◂	〈South African Rand〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇𑄚𑄴 𑄢𑄳𑄠𑄚𑄳𑄓𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: South Africa: ZAL (fund): ZAL-name|Southern]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""ZAR""]/displayName
+ccp [Chakma]	error	▸Currencies|Unknown_Region_(C)|Unknown_Region:_XBB|XBB-name-other◂	〈European monetary units〉	【】	〈𑄃𑄨𑄃𑄪𑄢𑄮𑄛𑄨𑄠𑄚𑄴 𑄑𑄬𑄋𑄢𑄴 𑄃𑄬𑄇𑄧𑄇𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Region: XEU: XEU-name|Unknown]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""XBB""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""XBB""]/displayName
+ccp [Chakma]	error	▸Currencies|Unknown_Region_(C)|Unknown_Region:_XBB|XBB-name◂	〈European Monetary Unit〉	【】	〈𑄃𑄨𑄃𑄪𑄢𑄮𑄛𑄨𑄠𑄚𑄴 𑄑𑄬𑄋𑄢𑄴 𑄃𑄬𑄇𑄧𑄇𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Region: XEU: XEU-name|Unknown]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""XBB""]/displayName
+ccp [Chakma]	error	▸Currencies|Unknown_Region_(C)|Unknown_Region:_XEU|XEU-name-other◂	〈European currency units〉	【】	〈𑄃𑄨𑄃𑄪𑄢𑄮𑄛𑄨𑄠𑄚𑄴 𑄑𑄬𑄋𑄢𑄴 𑄃𑄬𑄇𑄧𑄇𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Region: XBB: XBB-name|Unknown]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""XEU""]/displayName[@count=""other""]	//ldml/numbers/currencies/currency[@type=""XEU""]/displayName
+ccp [Chakma]	error	▸Currencies|Unknown_Region_(C)|Unknown_Region:_XEU|XEU-name◂	〈European Currency Unit〉	【】	〈𑄃𑄨𑄃𑄪𑄢𑄮𑄛𑄨𑄠𑄚𑄴 𑄑𑄬𑄋𑄢𑄴 𑄃𑄬𑄇𑄧𑄇𑄴〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Region: XBB: XBB-name|Unknown]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/currencies/currency[@type=""XEU""]/displayName
+ccp [Chakma]	error	▸Date_&_Time|Gregorian|Days_-_short_-_Formatting|mon◂	〈Mo〉	【】	〈𑄥𑄧𑄂〉	«=»	【】	⁅date symbol collision⁆	❮Error: The date value “𑄥𑄧𑄂” is the same as what is used for a different item: [- short - Formatting: sat, Days - short - Standalone: sat|Days]❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/days/dayContext[@type=""format""]/dayWidth[@type=""short""]/day[@type=""mon""]
+ccp [Chakma]	error	▸Date_&_Time|Gregorian|Days_-_short_-_Formatting|sat◂	〈Sa〉	【】	〈𑄥𑄧𑄂〉	«=»	【】	⁅date symbol collision⁆	❮Error: The date value “𑄥𑄧𑄂” is the same as what is used for a different item: [- short - Formatting: mon, Days - short - Standalone: mon|Days]❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/days/dayContext[@type=""format""]/dayWidth[@type=""short""]/day[@type=""sat""]
+ccp [Chakma]	error	▸Date_&_Time|Gregorian|Days_-_short_-_Standalone|mon◂	〈Mo〉	【】	〈𑄥𑄧𑄂〉	«=»	【】	⁅date symbol collision⁆	❮Error: The date value “𑄥𑄧𑄂” is the same as what is used for a different item: [- short - Formatting: sat, Days - short - Standalone: sat|Days]❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/days/dayContext[@type=""stand-alone""]/dayWidth[@type=""short""]/day[@type=""mon""]
+ccp [Chakma]	error	▸Date_&_Time|Gregorian|Days_-_short_-_Standalone|sat◂	〈Sa〉	【】	〈𑄥𑄧𑄂〉	«=»	【】	⁅date symbol collision⁆	❮Error: The date value “𑄥𑄧𑄂” is the same as what is used for a different item: [- short - Formatting: mon, Days - short - Standalone: mon|Days]❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/days/dayContext[@type=""stand-alone""]/dayWidth[@type=""short""]/day[@type=""sat""]
+ccp [Chakma]	error	▸Date_&_Time|Gregorian|Formats_-_Flexible_-_Date_Formats|yw-one◂	〈'week' w 'of' Y〉	【】	〈y 𑄃𑄬𑄢𑄴 𑄖𑄧𑄟𑄴 𑄥𑄛𑄴𑄖 w〉	«=»	【】	⁅incorrect date pattern⁆	❮Error: For id yw, the pattern (y 𑄃𑄬𑄢𑄴 𑄖𑄧𑄟𑄴 𑄥𑄛𑄴𑄖 w) must contain fields Y and w, and no others.❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dateTimeFormats/availableFormats/dateFormatItem[@id=""yw""][@count=""one""]
+ccp [Chakma]	error	▸Date_&_Time|Gregorian|Formats_-_Flexible_-_Date_Formats|yw-other◂	〈'week' w 'of' Y〉	【】	〈y 𑄃𑄬𑄢𑄴 𑄖𑄧𑄟𑄴 𑄥𑄛𑄴𑄖 w〉	«=»	【】	⁅incorrect date pattern⁆	❮Error: For id yw, the pattern (y 𑄃𑄬𑄢𑄴 𑄖𑄧𑄟𑄴 𑄥𑄛𑄴𑄖 w) must contain fields Y and w, and no others.❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dateTimeFormats/availableFormats/dateFormatItem[@id=""yw""][@count=""other""]
+ccp [Chakma]	error	▸Locale_Display_Names|Geographic_Regions|Africa|018◂	〈Southern Africa〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Africa: ZA|Southern]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/localeDisplayNames/territories/territory[@type=""018""]
+ccp [Chakma]	error	▸Locale_Display_Names|Territories_(Africa)|Southern_Africa|ZA◂	〈South Africa〉	【】	〈𑄘𑄧𑄉𑄨𑄚𑄴 𑄃𑄜𑄳𑄢𑄨𑄇〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [018|Africa:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/localeDisplayNames/territories/territory[@type=""ZA""]
+ccp [Chakma]	error	▸Numbers|Minimal_Pairs|Ordinal|other◂	〈Take the {0}th right.〉	【】	〈𑄓𑄬𑄚𑄬𑄘𑄨{0}𑄛𑄧𑄘𑄳𑄠𑄬 𑄝𑄬𑄋𑄇𑄧𑄋𑄚𑄴 𑄣𑄳𑄦𑄧〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [two|Ordinal:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/minimalPairs/ordinalMinimalPairs[@ordinal=""other""]
+ccp [Chakma]	error	▸Numbers|Minimal_Pairs|Ordinal|two◂	〈Take the {0}nd right.〉	【】	〈𑄓𑄬𑄚𑄬𑄘𑄨{0}𑄛𑄧𑄘𑄳𑄠𑄬 𑄝𑄬𑄋𑄇𑄧𑄋𑄚𑄴 𑄣𑄳𑄦𑄧〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [other|Ordinal:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/numbers/minimalPairs/ordinalMinimalPairs[@ordinal=""two""]
+ccp [Chakma]	error	▸Timezones|Australasia|Australia_CentralWestern|daylight-long◂	〈Australian Central Western Daylight Time〉	【】	〈𑄃𑄧𑄌𑄴𑄑𑄳𑄢𑄬𑄣𑄨𑄠𑄧 𑄃𑄏𑄧𑄣𑄴 𑄉𑄧𑄢𑄳𑄦𑄢𑄴 𑄘𑄨𑄚𑄮𑄃𑄣𑄮𑄢𑄴 𑄃𑄧𑄇𑄴𑄖𑄧〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [daylight-long|Australia_Central:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/timeZoneNames/metazone[@type=""Australia_CentralWestern""]/long/daylight
+ccp [Chakma]	error	▸Timezones|Australasia|Australia_Central|daylight-long◂	〈Australian Central Daylight Time〉	【】	〈𑄃𑄧𑄌𑄴𑄑𑄳𑄢𑄬𑄣𑄨𑄠𑄧 𑄃𑄏𑄧𑄣𑄴 𑄉𑄧𑄢𑄳𑄦𑄢𑄴 𑄘𑄨𑄚𑄮𑄃𑄣𑄮𑄢𑄴 𑄃𑄧𑄇𑄴𑄖𑄧〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [daylight-long|Australia_CentralWestern:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/timeZoneNames/metazone[@type=""Australia_Central""]/long/daylight
+fr [French]	error	▸Timezones|Europe|Europe_Central|daylight-short◂	〈null〉	【】	〈CEST〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [standard-short|Europe_Central:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/timeZoneNames/metazone[@type=""Europe_Central""]/short/daylight[@draft=""contributed""]
+fr [French]	error	▸Timezones|Europe|Europe_Central|standard-short◂	〈null〉	【】	〈CEST〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [daylight-short|Europe_Central:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/timeZoneNames/metazone[@type=""Europe_Central""]/short/standard[@draft=""unconfirmed""]
+fr_CA [French|Canadian]	error	▸Numbers|Symbols|Time_Symbols_|Time_Separator◂	〈:〉	【】	〈.〉	«=»	【】	⁅invalid symbol⁆	❮Error: Invalid timeSeparator: .; must match what is used in Hm time pattern: HH 'h' mm❯	//ldml/numbers/symbols[@numberSystem=""latn""]/timeSeparator[@draft=""contributed""]
+ia [Interlingua]	error	▸Characters|Typography|Style|wdth-100◂	〈normal〉	【】	〈normal〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wght-400|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""100""]
+ia [Interlingua]	error	▸Characters|Typography|Style|wght-400◂	〈regular〉	【】	〈normal〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-100|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wght""][@subtype=""400""]
+nds [German|Low]	error	▸Numbers|Symbols|Time_Symbols_|Time_Separator◂	〈:〉	【】	〈:〉	«=»	【】	⁅invalid symbol⁆	❮Error: Invalid timeSeparator: :; must match what is used in Hm time pattern: 'Kl'. H.mm❯	//ldml/numbers/symbols[@numberSystem=""latn""]/timeSeparator	root
+ps_PK [(Pakistan)|Pashto]	error	▸Date_&_Time|Gregorian|Eras_-_abbreviated|0◂	〈BC〉	【】	〈له میلاد وړاندے〉	«=»	【】	⁅value too wide⁆	❮Error: Too wide by about 130% (with common fonts).❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/eras/eraAbbr/era[@type=""0""]
+sr_Latn [(Latin)|Serbian]	error	▸Date_&_Time|Fields|Relative_Sunday_Narrow|-1◂	〈last Su〉	【】	〈prošle ned〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Week Short: -1|Relative]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/fields/field[@type=""sun-narrow""]/relative[@type=""-1""]
+sr_Latn [(Latin)|Serbian]	error	▸Date_&_Time|Fields|Relative_Sunday_Narrow|1◂	〈next Su〉	【】	〈sledeće ned〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Week Short: 1|Relative]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/fields/field[@type=""sun-narrow""]/relative[@type=""1""]
+sr_Latn [(Latin)|Serbian]	error	▸Date_&_Time|Fields|Relative_Week_Short|-1◂	〈last wk.〉	【】	〈prošle ned.〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Sunday Narrow: -1|Relative]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/fields/field[@type=""week-short""]/relative[@type=""-1""][@draft=""contributed""]
+sr_Latn [(Latin)|Serbian]	error	▸Date_&_Time|Fields|Relative_Week_Short|1◂	〈next wk.〉	【】	〈sledeće ned.〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [Sunday Narrow: 1|Relative]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/dates/fields/field[@type=""week-short""]/relative[@type=""1""][@draft=""contributed""]
+tg [Tajik]	error	▸Date_&_Time|Gregorian|Formats_-_Flexible_-_Date_Formats|yw-other◂	〈'week' w 'of' Y〉	【】	〈'ҳафтаи' w, y〉	«=»	【】	⁅incorrect date pattern⁆	❮Error: For id yw, the pattern ('ҳафтаи' w, y) must contain fields Y and w, and no others.❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dateTimeFormats/availableFormats/dateFormatItem[@id=""yw""][@count=""other""]
+to [Tongan]	error	▸Characters|Typography|Style|wdth-100◂	〈normal〉	【】	〈totonu〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wght-400|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""100""]
+to [Tongan]	error	▸Characters|Typography|Style|wght-400◂	〈regular〉	【】	〈totonu〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-100|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wght""][@subtype=""400""]
+to [Tongan]	error	▸Date_&_Time|Gregorian|Eras_-_abbreviated|0-variant◂	〈BCE〉	【】	〈BCE〉	«=»	【】	⁅abbreviated date field too wide⁆	❮Error: Abbreviated value ""BCE"" can't be longer than the corresponding wide value ""KM""❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/eras/eraAbbr/era[@type=""0""][@alt=""variant""]
+tt [Tatar]	error	▸Date_&_Time|Gregorian|Formats_-_Flexible_-_Date_Formats|yw-other◂	〈'week' w 'of' Y〉	【】	〈y 'елның' w 'атнасы'〉	«=»	【】	⁅incorrect date pattern⁆	❮Error: For id yw, the pattern (y 'елның' w 'атнасы') must contain fields Y and w, and no others.❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dateTimeFormats/availableFormats/dateFormatItem[@id=""yw""][@count=""other""]
+xh [Xhosa]	error	▸Date_&_Time|Gregorian|Formats_-_Flexible_-_Date_Formats|yw-one◂	〈'week' w 'of' Y〉	【】	〈'week' w 'of' y〉	«=»	【】	⁅incorrect date pattern⁆	❮Error: For id yw, the pattern ('week' w 'of' y) must contain fields Y and w, and no others.❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dateTimeFormats/availableFormats/dateFormatItem[@id=""yw""][@count=""one""]
+xh [Xhosa]	error	▸Date_&_Time|Gregorian|Formats_-_Flexible_-_Date_Formats|yw-other◂	〈'week' w 'of' Y〉	【】	〈'week' w 'of' y〉	«=»	【】	⁅incorrect date pattern⁆	❮Error: For id yw, the pattern ('week' w 'of' y) must contain fields Y and w, and no others.❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dateTimeFormats/availableFormats/dateFormatItem[@id=""yw""][@count=""other""]
+yo [Yoruba]	error	▸Date_&_Time|Gregorian|Day_Periods_-_abbreviated_-_Formatting|am◂	〈AM〉	【】	〈Àárọ̀〉	«=»	【】	⁅abbreviated date field too wide⁆	❮Error: Abbreviated value ""Àárọ̀"" can't be longer than the corresponding wide value ""Àr""❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dayPeriods/dayPeriodContext[@type=""format""]/dayPeriodWidth[@type=""abbreviated""]/dayPeriod[@type=""am""]
+yo [Yoruba]	error	▸Date_&_Time|Gregorian|Day_Periods_-_abbreviated_-_Formatting|pm◂	〈PM〉	【】	〈Ọ̀sán〉	«=»	【】	⁅abbreviated date field too wide⁆	❮Error: Abbreviated value ""Ọ̀sán"" can't be longer than the corresponding wide value ""Ọ̀s""❯	//ldml/dates/calendars/calendar[@type=""gregorian""]/dayPeriods/dayPeriodContext[@type=""format""]/dayPeriodWidth[@type=""abbreviated""]/dayPeriod[@type=""pm""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Axis|ital◂	〈italic〉	【】	〈斜体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [slnt|Axis:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/axisName[@type=""ital""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Axis|slnt◂	〈slant〉	【】	〈斜体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [ital|Axis:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/axisName[@type=""slnt""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|opsz-18◂	〈titling〉	【】	〈标题〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [opsz-8|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""opsz""][@subtype=""18""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|opsz-8◂	〈caption〉	【】	〈标题〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [opsz-18|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""opsz""][@subtype=""8""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-112.5-extended◂	〈semiextended〉	【】	〈半平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-87.5|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""112.5""][@alt=""extended""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-125-extended◂	〈extended〉	【】	〈平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-75|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""125""][@alt=""extended""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-200-extended◂	〈ultraextended〉	【】	〈极平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-50, Style: wdth-62.5|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""200""][@alt=""extended""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-50◂	〈ultracondensed〉	【】	〈极平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-200, Style: wdth-62.5|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""50""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-62.5◂	〈extra-condensed〉	【】	〈极平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-200, Style: wdth-50|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""62.5""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-75◂	〈condensed〉	【】	〈平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-125|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""75""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wdth-87.5◂	〈semicondensed〉	【】	〈半平长体〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wdth-112.5|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wdth""][@subtype=""87.5""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wght-380◂	〈book〉	【】	〈标准〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wght-400|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wght""][@subtype=""380""]
+yue_Hans [(Simplified)|Cantonese]	error	▸Characters|Typography|Style|wght-400◂	〈regular〉	【】	〈标准〉	«=»	【】	⁅display collision⁆	❮Error: Can't have same translation as [wght-380|Style:]. Please change either this name or the other one. See <a target='doc' href='http://cldr.unicode.org/translation/short-names-and-keywords#TOC-Unique-Names'>Unique-Names</a>.❯	//ldml/typographicNames/styleName[@type=""wght""][@subtype=""400""]
+{noformat}",,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=6, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":6,""lastUpdated"":""2019-02-07T03:14:51.000-0800"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":6,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,dsub,0|i0ac27:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,2019-05-09 19:42:52.102,dsub,,,03/Feb/19 5:34 AM,mark,,mark,fixed,,closed,,,"09/May/19 12:42 PM;5b34954eddd2363f63053eec;h6. Trac Comment 2 by [~accountid:5b1fa41abe73de20759a87c2]—2019-02-11T12:47:07.161Z
+We currently lose the information that the inheritance marker was approved, which loses the information we need to do the right thing for coverage / logical groups. [this has been an issue for a while, but smaller in scope so we didn't notice it; by improving the way we handle inheritance markers, we have just brought it to light.|Background:]
+
+To do that need to output the inheritance marker (for winning values!) into vxml. We can then process it as needed to deal with the logical groupings and coverage. So here's my plan.
+
+I looked at the cldr-apps code, and it looks like that is easy to do in OutputFileManager.java. (Thanks to John and/or Steve for the foresight...). It is to make the following change (just deleting the ""SUPPRESS_IM"").
+
+OLD
+    Map<String, Object> OPTS_SKIP_ANNOTATIONS = ImmutableMap.of(""SUPPRESS_IM"", true,
+
+        ""SKIP_PATH"", isAnnotations);
+
+    Map<String, Object> OPTS_KEEP_ANNOTATIONS = ImmutableMap.of(""SUPPRESS_IM"", true,
+
+        ""SKIP_PATH"", isAnnotations.negate());
+
+NEW
+    Map<String, Object> OPTS_SKIP_ANNOTATIONS = ImmutableMap.of(
+
+        ""SKIP_PATH"", isAnnotations);
+
+    Map<String, Object> OPTS_KEEP_ANNOTATIONS = ImmutableMap.of(
+
+        ""SKIP_PATH"", isAnnotations.negate());
+
+
+That eventually causes CLDRFile.write(PrintWriter pw, Map<String, ?> options) to *not* skip the inheritance markers.
+
+So I'd do the following.
+## Make this change and push to production
+## Pull down the vxml data again
+## Write a simple tool
+### for each directory, for each locale's file, for each missing item in trunk data
+### get the vxml value. If it is ↑↑↑, then add the Bailey value to the file.
+## Run tests, regenerate coverage, etc. and check in.
+## File a ticket for next release to modify that tool as appropriate so that we can automate the handling of ↑↑↑ when pulling the vxml data into trunk",,,,,,,Done
+BRS Tasks,CLDR-11828,70272,Bug,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,blocks-progress,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,TracBot,5b34954eddd2363f63053eec,10/Jan/19 9:17 PM,09/May/19 12:43 PM,08/Sep/21 3:09 PM,,35,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"Integrate ST into XML
+...",,User ,,,,unknown,,,,,,,,,,,,,,,,,,,"{repository={count=27, dataType=repository}, json={""cachedValue"":{""errors"":[],""summary"":{""repository"":{""overall"":{""count"":27,""lastUpdated"":""2019-03-07T08:44:09.000-0800"",""dataType"":""repository""},""byInstanceType"":{""GitHub"":{""count"":27,""name"":""GitHub""}}}}},""isStale"":true}}",,,,,,,,0|i0ac1r:,,,John Emmons,5b353e5c1434ca6683d9b0ad,,,,,,,,,,2019-05-09 19:43:03.313,spec-beta,,,03/Feb/19 12:13 AM,mark,,mark,fixed,,closed,,,"09/May/19 12:43 PM;5b34954eddd2363f63053eec;h6. Trac Comment 3 by [~accountid:5b1fa41abe73de20759a87c2]—2019-03-16T00:32:51.917Z
+Closing now; separate ticket is final BRS items.",,,,,,,Done
+"<JCS-Enterprises-LLC=""Patrick Rene Guerrero"">",CLDR-15025,86884,Docs,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,assess,Invalid,,,Patty stackzzcrypted,61302ecf6a4c09006aae0a66,Patty stackzzcrypted,61302ecf6a4c09006aae0a66,01/Sep/21 6:59 PM,08/Sep/21 9:27 AM,08/Sep/21 3:09 PM,08/Sep/21 9:27 AM,,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,"[~accountid:61302ecf6a4c09006aae0a66] [~accountid:61302ecf6a4c09006aae0a66] 
+
+<Patrick Rene Guerrero>
+
+# Patrick Rene Guerrero
+
+[Stackzzcrypt3ed3c@outlook.com|mailto:Stackzzcrypt3ed3c@outlook.com] or [Pattystackzz.jcs@gmail.com|mailto:Pattystackzz.jcs@gmail.com]
+
+[https://truth4purpose.wordpress.com|https://truth4purpose.wordpress.com|smart-link] 
+
+Stackzzcrypted3c
+
+{quote}“Dream It, Believe It, Achieve It”
+
+JCS Enterprises LLC
+
+Patrick Rene Guerrero
+
+CEO/FOUNDER
+
+“Copyright-License(2021) JCS Enterprises LLC, Patrick Rene Guerrero”{quote}
+
+h1. JCS-Enterprises- LLC (c)[https://unicode-org.atlassian.net/browse/CLDR-15025|https://unicode-org.atlassian.net/browse/CLDR-15025|smart-link] ",,Patty stackzzcrypted,Steven R. Loomis,,,61302ecf6a4c09006aae0a66,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0d6l3:,,,,,,,,,,,,,,2021-09-08 16:27:41.473,,,,,,,,,,,,,08/Sep/21 9:27 AM;5af4a8718a1abd1427952ed9;spam,,,,,,,Done
+CLDR API? ,CLDR-14463,86073,Enhancement,Done,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,assess,Invalid,,,Kadir SELÇUK,5eeb5b6c02b4400ac4cf878f,Kadir SELÇUK,5eeb5b6c02b4400ac4cf878f,02/Feb/21 12:41 AM,22/Mar/21 7:15 PM,08/Sep/21 3:09 PM,02/Feb/21 7:59 AM,1.1,1.2,1.3,1.4,1.4.1,1.5,1.5.1,1.6,1.6.1,1.7,1.7.1,1.8,1.8.1,1.9,2.0,2.0.1,21,21.0.1,22,25,29,35,BRS,charts,collation,ConsoleChecks,coverage,currency,data-general,datetime,docs,docs-spec,emoji,exemplars-etc,infrastructure,json,keyboards,lists,locale-codes-names,locale-create,locale-demographics,numbers,numbers-rbnf,PersonNames,plurals,posix,segmentation,subdivision,supplemental-other,SurveyTool,SurveyTool-UI,timezone,Tools-Internal,transliteration,units,,0,CLD,,CLDR API ,,Kadir SELÇUK,Steven R. Loomis,,,5eeb5b6c02b4400ac4cf878f,5af4a8718a1abd1427952ed9,,,,,,,,,,,,,,,,,,{},,,,,Impediment,,,0|i0d1kv:,,,Kadir SELÇUK,5eeb5b6c02b4400ac4cf878f,,,,,,,,,,2021-02-02 15:59:38.325,,,,,,,,,,,,,02/Feb/21 7:59 AM;5af4a8718a1abd1427952ed9;spam,,,,,,,Done
+Modify CompareEn.java,CLDR-13297,84281,Bug,New,CLDR,CLDR,software,TracBot,5b34954eddd2363f63053eec,,https://unicode.org/cldr,assess,,,,Mark Davis,5b1fa41abe73de20759a87c2,Mark Davis,5b1fa41abe73de20759a87c2,19/Sep/19 9:55 PM,13/Jan/21 3:41 PM,08/Sep/21 3:09 PM,,,,,,,,,,,,,,,,,,,,,,,,BRS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0,,,Modify the CompareEn.java to handle the exceptional cases from https://github.com/unicode-org/cldr/pull/168.,,Mark Davis,,,,5b1fa41abe73de20759a87c2,,,,,,,,,,,,,,,,,,,{},,,,,,,,0|i0cqin:,,,,,,,,,,,,,,,dvet,,,,,,,,,,,,,,,,,,,To Do
