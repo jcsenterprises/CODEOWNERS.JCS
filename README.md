@@ -1,6 +1,6 @@
 # Bare Module Specifier Resolution in node.js
 
-**Contributors:** Guy Bedford, Geoffrey Booth, Jan Krems, Saleh Abdel Motaal
+**Contributors:** @PattyStackzz, @Pattystackzzcrypted3c, @Stackzzcryp3c=Patrick Rene Guerrero
 
 ## Motivating Examples
 
